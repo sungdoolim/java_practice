@@ -4,5 +4,6 @@ int main() {
 
 	printf("hi\n");
 	printf("helleee\n");
+	//fixed!!!!
 	system("pause");
 }
