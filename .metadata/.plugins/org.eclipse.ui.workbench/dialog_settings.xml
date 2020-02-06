@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="627" key="DIALOG_X_ORIGIN"/>
+		<item value="132" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="-1" key="dialogHeight"/>
+		<item value="-1" key="dialogWidth"/>
+		<list key="textEntries">
+		</list>
+		<list key="orderedElements">
+		</list>
+		<list key="orderedProviders">
+		</list>
+		<list key="textArray">
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.ZipFile" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="ZipFileImportWizard">
+		<item value="false" key="WizardZipFileResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
+		<list key="WizardZipFileResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\bohee\Desktop\자바 20일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바 19일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바 18일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바 17일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바 16일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\자바 15일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\0830자바1일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\자바1일차 소스코d드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\자바1일차 소스코드이거라도.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\자바 12일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\Customer.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\자바1일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바 6일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\java0820d.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바1일차 소스코드.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\java0817.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\java0816.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\java0810.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\java0809.zip"/>
+			<item value="C:\Users\bohee\Desktop\자바입니다\java0808.zip"/>
+		</list>
+	</section>
+</section>
