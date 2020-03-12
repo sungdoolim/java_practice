@@ -1,0 +1,27 @@
+package javapractice;
+
+import java.util.Scanner;
+
+public class test1 {
+
+	public static void main(String[] args) {
+
+		Scanner sc=new Scanner(System.in);
+		int len=sc.nextInt();
+		int []ar=new int[len];
+		int []br=ar;
+		for(int i=0;i<len;i++) {
+			ar[i]=sc.nextInt();
+			System.out.println(br[i]);
+		}
+
+		int i=3;
+		while(true) {
+			if(ar[i]>ar[i-1]&&ar[i]>ar[i+1]&&ar[i]>ar[i-2]&&ar[i]>ar[i+2]) {
+				
+			}
+		}
+		
+	}
+
+}
