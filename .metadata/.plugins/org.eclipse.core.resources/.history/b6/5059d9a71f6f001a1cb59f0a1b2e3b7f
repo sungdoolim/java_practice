@@ -1,0 +1,96 @@
+package week2;
+
+import java.util.Stack;
+
+public class no3_3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int ran=0;
+		int []N=new int[10];
+		for(int i=0;i<5;i++) {
+			ran=(int)(Math.random()*20)+1;
+			N[i]=ran;
+			System.out.print(N[i]+" ");
+		}
+		quick(N,5);
+		System.out.println("----------------------");
+		for(int i=0;i<5;i++) {
+			System.out.print(N[i]+" ");
+		}
+	
+	}
+	static void pr(int []N) {
+		for(int i=0;i<5;i++) {
+			System.out.print(N[i]+" ");
+		}System.out.println();
+	}
+	static void quick(int[]N,int len) {
+		Stack<Integer> stack = new Stack<>();
+		
+	
+		int start=0;
+		int end=len-1;
+		stack.push(end);
+		stack.push(start);
+		
+		int left=0;
+		int right=0;
+		
+		int tmp=0;
+		
+		while(!stack.isEmpty()) {
+		
+			start=stack.pop();
+			left=start+1;
+			end=stack.pop();
+			right=end;
+			System.out.println("stack : "+start+" "+end);
+			
+			while(true) {
+				System.out.println();
+				pr(N);
+			
+				left=start+1;
+				right=end;
+			while(N[start]>N[left]) {
+				left++;
+				if(left>end) {
+					left=start;
+					break;
+				}
+				
+			}System.out.println("left : "+left);
+			while(N[start]<N[right]) {
+				right--;
+				if(right<start) {
+					right=start;
+					break;
+				}
+			}System.out.println("right : "+right);
+			if(left<right) {
+				System.out.println("if 1");
+				tmp=N[left];
+				N[left]=N[right];
+				N[right]=tmp;
+			}else if(left==right) {
+				System.out.println("if 2");
+			break;	
+			}
+			else {
+				System.out.println("if 3");
+				tmp=N[start];
+				N[start]=N[right];
+				N[right]=tmp;
+				stack.push(end);
+				stack.push(right+1);
+				stack.push(right-1);
+				stack.push(start);
+				break;
+			}
+			}
+			
+		}
+	}
+
+}

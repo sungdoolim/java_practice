@@ -1,0 +1,17 @@
+package week2;
+
+public class no3_2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int ran=(int)(Math.random()*10000)+1;
+		
+	}
+	static int bubble(int[] ar) {
+		
+		
+		return 1;
+	}
+
+}

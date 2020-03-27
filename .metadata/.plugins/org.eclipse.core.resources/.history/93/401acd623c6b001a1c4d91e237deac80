@@ -1,0 +1,19 @@
+package javapractice;
+
+import java.util.Scanner;
+
+public class 소풍 {
+
+	Scanner sc=new Scanner(System.in);
+	int testcase=sc.nextInt();
+	for(int i=0;i<testcase;i++) {
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+}

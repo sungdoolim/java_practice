@@ -1,0 +1,42 @@
+package week2;
+
+import java.util.Scanner;
+
+public class no2_3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int []ar=new int[n];
+		for(int i=0;i<n;i++) {
+			ar[i]=sc.nextInt();
+			}
+		int len=ar.length;
+		System.out.println(gcdar(ar,0,len));
+		
+	}
+	static int gcdar(int []ar,int index,int len) {
+		
+		return gcd(ar[index],gcdar(ar,index+1,len));
+		
+		
+		return 1;
+	}
+static int gcd(int a, int b) {
+		
+		if(a!=0&&b==0) {
+			return a;
+		}else if(a==0&&b!=0) {
+			return b;
+		}
+		else if(a>b) {
+			return gcd(b,a%b);
+		}else {
+			return gcd(a,b%a);
+		}
+	
+		
+	}
+}
