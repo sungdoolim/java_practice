@@ -1,0 +1,62 @@
+//2015112120 임성두
+package week3;
+
+public class no1_1 {
+
+	public static void main(String[] args) {
+
+		int  []A= {30, 20, 40, 35, 5, 50, 45, 10, 25, 15};
+		int len=A.length;
+		for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
+		
+		mergeSort(A,0,len-1);
+		for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
+		
+	}
+
+	
+	static void mergeSort(int []A,int left,int right) {
+		if(left>=right) {
+			return;
+		}
+		int middle=(left+right)/2;
+		mergeSort(A,left,middle);
+		mergeSort(A,middle+1,right);
+		
+		merge(A,left,right,middle);
+	}
+	static void merge(int[]A,int left,int right,int middle) {
+		int []B=new int[right-left+1];
+		int index=0;
+		int l=left;
+		int r=right;
+		int m=middle+1;
+		while(true) {
+		    if(l==m) {
+		    	for(;m<=right;m++) {
+		    		B[index]=A[m];
+		    		System.out.println(index+" "+B[index]);
+		    		index++;
+		    	}
+		    	break;
+		    }else if(m==right+1) {
+		    	for(;l<m;l++) {
+	    		B[index]=A[l];
+	    		System.out.println(index+" "+B[index]);
+	    		index++;
+	    	}
+		    	break;
+		    }
+			else if(A[l]>A[m]) {
+				B[index]=A[m];m++;
+				System.out.println(index+" "+B[index]);index++;
+			}else if(A[l]<=A[m]) {
+				B[index]=A[l];l++;
+				System.out.println(index+" "+B[index]);index++;
+			}
+		}
+		for(int i=0;i<right-left+1;i++) {
+			A[left+i]=B[i];
+		}
+	}
+}

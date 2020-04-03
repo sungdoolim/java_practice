@@ -1,0 +1,114 @@
+//2015112120 임성두
+package week3;
+
+import java.util.Stack;
+
+public class no1_2 {
+	static int index=0;
+
+	static int []A= {30, 20, 40, 35, 5, 50, 45, 10, 25, 15};
+	static int []B=new int[10];// 0으로 초기화가 됨
+	static int len=A.length;
+	public static void main(String[] args) {
+		int len=A.length;
+	
+		for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
+		
+		System.out.println();
+		mergeSort(A);
+		for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
+
+	}
+	
+	static void mergeSort(int[]A) {
+
+	int k=1;
+	int tmp;int t1, t2,t;
+
+	for(int i=0;i<len;i+=2) {
+		if (i==len)break;
+		if(A[i]>A[i+1]) {
+			tmp=A[i];
+			A[i]=A[i+1];
+			A[i+1]=tmp;
+		}
+	}// 배열의 원소 두개씩만 묶어서 정렬한 것 입니다.
+	
+	
+	
+	for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
+	System.out.println();
+	
+	
+	
+	while(true) {
+		//int middle=(left+right)/2;
+		sort(A,0,3,1);
+		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
+		System.out.println("B1");
+		sort(A,4,7,5);
+		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
+		System.out.println("B2");
+		index=0;
+		sort(A,0,7,3);
+		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
+		System.out.println("B3");
+		index=0;
+		
+		sort(A,0,len-1,6);
+		
+		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
+		System.out.println("B4");
+		break;
+		
+	}
+	
+	
+	}
+	
+	
+	
+	static void sort(int[]A,int left,int right,int middle) {
+		
+		int l=left,r=right,m=middle+1;
+		if(left>=right||l>right||r>right)return;
+		
+		while(true) {
+	//		System.out.println(m);
+		if(l>middle+1||m>right )
+			break;
+		if(A[l]>A[m]) {
+			B[index]=A[m];
+			index++;m++;
+			for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
+			System.out.println("Bin");
+			System.out.println(l+","+r+","+m);
+			
+			break;
+			
+			
+		}else if(A[l]<=A[m]) {
+			B[index]=A[l];
+			index++;l++;
+		}
+	
+		}
+		
+		
+		
+		if(l<=middle) {
+			for(;l<=middle;l++) {
+				//System.out.println(index+","+l+","+m);
+				B[index]=A[l];
+				index++;
+			}
+		}else if(m<=right) {
+			for(;m<=right;m++) {
+			//	System.out.println(index+","+l+","+m);
+				B[index]=A[m];
+				index++;
+			}
+		}
+		
+	}
+}
