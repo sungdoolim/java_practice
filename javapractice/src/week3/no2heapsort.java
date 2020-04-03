@@ -1,3 +1,4 @@
+//2015112120 임성두
 package week3;
 
 public class no2heapsort {
@@ -7,11 +8,19 @@ public class no2heapsort {
 
 		int []A= {4,1,3,2,16,9,10,14,8,7};
 		int len=A.length;
+		System.out.println("처음 배열 : ");
+		for(int i=0;i<10;i++){
+			System.out.print(A[i]+" ");
+		}System.out.println("\n");
 		makeheap(A,0,len-1);	
 		// 힙 생성 완료
-		
+		System.out.println("힙 생성 후 배열 : ");
+		for(int i=0;i<10;i++){
+			System.out.print(A[i]+" ");
+		}System.out.println("\n");
 		heapsort(A);
 		
+		System.out.println("힙 정렬 후 배열 : ");
 		for(int i=0;i<A.length;i++) {
 			System.out.print(A[i]+" ");
 		}	
@@ -28,17 +37,18 @@ public class no2heapsort {
 	}
 	
 	public static void makeheap(int[]A,int root,int last) {
-		
+		// no2makeheap의 makeheap메서드와 동일합니다
 		int index=(last-1)/2;
 		for(int i=index;i>=root;i--) {
 		
 			makeheap2(A,i,last);	
-			for(int j=0;j<=last;j++) {
+			for(int j=0;j<10;j++) {
 				System.out.print(A[j]+" ");
 			}	System.out.println();
 		}	
 	}
 	public static void makeheap2(int[]A,int index,int end) {
+		// no2makeheap의 makeheap2메서드와 동일합니다
 		int t1=2*index+1;
 		int t2=2*index+2;
 		int len=end+1;

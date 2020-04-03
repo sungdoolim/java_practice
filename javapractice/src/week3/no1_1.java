@@ -38,32 +38,29 @@ public class no1_1 {
 		int index=0;
 		int l=left;
 		int m=middle+1;
-	//	System.out.println("merge : "+l+" "+r+" "+m);
 		while(true) {
-		    if(l>=middle+1) {
+		    if(l>=middle+1) {// l 이 중간 값을 넘어서면 비교가 끝난 것 입니다.
 		    	for(;m<=right;m++) {
+// left < middle 쪽에서 비교할 값이 없기에 middle~ right쪽의 배열 값은 그대로 B배열에 넣으면 됩니다.
 		    		B[index]=A[m];
-		    		//System.out.println(index+" "+B[index]);
 		    		index++;
 		    	}
 		    	break;
 		    }else if(m>=right+1) {
+		    	// m이 right를 넘어가면 middle ~ right의 배열들의 비교가 끝난 것 입니다
 		    	for(;l<middle+1;l++) {
-		    	//	System.out.println(l+","+m+","+index);
+// middle < right 쪽에서 비교할 값이 없기에 left~ middle쪽의 배열 값은 그대로 B배열에 넣으면 됩니다.
 	    		B[index]=A[l];
-	    		//System.out.println(index+" "+B[index]);
 	    		index++;
 	    	}
 		    	break;
 		    }
 			else if(A[l]>A[m]) {
+// left쪽과 middle쪽에서 하나씩 비교후 작은 값을 B에 넣습니다.
 				B[index]=A[m];m++;
-			//	System.out.println(index+" "+B[index]);
-				index++;
-				
+				index++;		
 			}else if(A[l]<=A[m]) {
 				B[index]=A[l];l++;
-			//	System.out.println(index+" "+B[index]);
 				index++;
 			}
 		}

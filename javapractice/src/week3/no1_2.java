@@ -22,138 +22,72 @@ public class no1_2 {
 		for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
 
 	}
-	static void mergeSort(int[]A) {
-
-	int k=1;
-	int tmp;int t1, t2,t;
-
-/*	for(int i=0;i<len;i+=2) {
-		if (i==len)break;
-		if(A[i]>A[i+1]) {
-			tmp=A[i];
-			A[i]=A[i+1];
-			A[i+1]=tmp;
-		}
-	}*/// 배열의 원소 두개씩만 묶어서 정렬한 것 입니다.
-	
-
-	//for(int i=0;i<len;i++) {System.out.print(A[i]+" ");}
-	//System.out.println();
-		//int middle=(left+right)/2;
-	
+	static void mergeSort(int[]A) {	
 	int rest=0;
 		test :for(int i=0;i<len;i++) {
-		
+// 배열은 2^n개씩 묶어서 정렬할 것입니다.
+//배열을 두 개씩 , 4개씩, 8개씩 , 2^4개씩 ......2^n 개씩 묶어서 정렬하는 것이 핵심입니다.(2^n<len)
 			int p=(int) Math.pow(2, i+1);
 			int m;
 			for(int j=0;j<len;j+=p) {
 				if(j==0) {
-					index=0;
+					index=0;//배열 처음부터 정렬하려면 B의 index를 초기화 해야합니다
 					if(j+p-1>=len) {
-					//	System.out.println(rest);
-						sort(A,0,len-1,rest);	
-					//	for(int a=0;a<len;a++) {System.out.print(A[a]+" ");}
-					//	System.out.println("Ainsort");
+//2^n개씩 나눠가며 정렬할때 정렬할 index를 넘어가면 최종 정렬을 합니다.
+// 예를 들어 100의 크기의 배열을 정렬할때 2개씩, 4개씩, 8개씩 .....64개, 128개씩 정렬할때
+//128은 100을 넘어가기에 0~ 100까지만 정렬한다는 것 입니다.
+						sort(A,0,len-1,rest);
 						break test;
 					}
 				}
 				if(j+p-1>=len) {
 					sort(A,j,len-1,(j+len-1)/2);
 					break;
+					
+					/*
+					* 예를 들어 100의 크기의 배열을 정렬할때 2개씩, 4개씩, 8개씩 .....64개씩 정렬할때
+					* 0~64번째 인덱스의 값을 정렬하고나면 65~128번째 인덱스 값을 정렬해야 합니다.
+					* 이때 128은 100을 넘어가기에 65~100까지만 정렬합니다.
+					*/
 				}
 				m=(2*j+p-1)/2;
 				sort(A,j,j+p-1,m);
 				rest=j+p-1;
-			}//sort(A,rest,len-1,(rest+len-1)/2);
+			}
 			for(int a=0;a<len;a++) {System.out.print(A[a]+" ");}
 			System.out.println();
 		}
-		/*sort(A,0,3,1);
-		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-		System.out.println("B1");
-		for(int i=0;i<len;i++)System.out.print(A[i]+" ");System.out.println();
-		
-		sort(A,4,7,5);
-		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-		System.out.println("B2");
-		
-		
-		for(int i=0;i<len;i++)System.out.print(A[i]+" ");System.out.println();
-		
-		index=0;
-	
-		sort(A,0,7,3);
-		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-		System.out.println("B3");
-		index=0;
-		for(int i=0;i<len;i++)System.out.print(A[i]+" ");System.out.println();
-		
-		
-		sort(A,0,len-1,7);
-		for(int i=0;i<len;i++)System.out.print(A[i]+" ");System.out.println();		
-		for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-		System.out.println("B4");
-		break;
-		*/	
 	}
-	
-	
-	
 	static void sort(int[]A,int left,int right,int middle) {
-		
 		int l=left,r=right,m=middle+1;
 		if(left>=right||l>right||r>right) 			
 			return;
-		
 		while(true) {
-	//		System.out.println(m);
-		if(l>middle||m>right )
-			break;
+		if(l>middle||m>right ) {
+			// left부터의 값이나 middle부터의 값이 비교 대상이 없을때는 while문 break합니다
+			break;}
 		if(A[l]>A[m]) {
 			B[index]=A[m];
-			index++;m++;
-			//for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-			//System.out.println("Bin");
-			//System.out.println(l+","+r+","+m);
-	
-			
-			
+			index++;m++;			
 		}else if(A[l]<=A[m]) {
 			B[index]=A[l];
 			index++;l++;
-			//for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-		//	System.out.println("Bin2");
-			//System.out.println(l+","+r+","+m);
 		}
-	
-		}
-		
-		
-		
+	}//left부터의 값과 middle부터의 값을 비교하여 B에 넣습니다.
 		if(l<=middle) {
 			for(;l<=middle;l++) {
-				//System.out.println(index+","+l+","+m);
 				B[index]=A[l];
 				index++;
-			//	for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-			//	System.out.println("Bin3");
-			//	System.out.println(l+","+r+","+m);
 			}
 		}else if(m<=right) {
 			for(;m<=right;m++) {
-			//	System.out.println(index+","+l+","+m);
 				B[index]=A[m];
 				index++;	
-			//	for(int i=0;i<len;i++) {System.out.print(B[i]+" ");}
-			//	System.out.println("Bin4");
-			//	System.out.println(l+","+r+","+m);
 			}
-		}
+		}// 비교 되지 않아 남아있는 left부터의 값이나 middle부터의 값을 그대로 B배열에 넣습니다.
 		
 		for(int i=left;i<=right;i++) {
 			A[i]=B[i];// 정렬된 배열을 복사 합니다.
-			}
-		
-		
+			}//메서드가 끝나기전 배열 복사입니다.
 	}
 }
