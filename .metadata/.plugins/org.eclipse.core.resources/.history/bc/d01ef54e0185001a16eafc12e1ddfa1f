@@ -1,0 +1,12 @@
+//2015112120 임성두
+package week6;
+
+public class no1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		node head=new node[];
+	}
+
+}

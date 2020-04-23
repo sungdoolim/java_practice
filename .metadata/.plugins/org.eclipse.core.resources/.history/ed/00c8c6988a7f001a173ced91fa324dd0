@@ -1,0 +1,43 @@
+package week5;
+
+public class no1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		no1_map [][]map= {
+				{new no1_map(3,1),new no1_map(2,0),new no1_map(4,2),new no1_map(0,4),new no1_map(-1,3)},
+				{new no1_map(3,4),new no1_map(2,6),new no1_map(4,5),new no1_map(1,2),new no1_map(-1,1)},
+				{new no1_map(0,4),new no1_map(7,4),new no1_map(3,5),new no1_map(4,2),new no1_map(-1,1)},
+				{new no1_map(3,5),new no1_map(3,6),new no1_map(0,8),new no1_map(2,5),new no1_map(-1,3)},
+				{new no1_map(1,-1),new no1_map(3,-1),new no1_map(2,-1),new no1_map(2,-1),new no1_map(-1,-1)}
+				};
+		
+		dynamic(map);
+		
+		
+	}
+	static void dynamic(no1_map[][] map) {
+		int t1,t2;
+		map[0][0].max=0;
+		for(int i=1;i<5;i++) {
+			map[0][i].max=map[0][i-1].right+map[0][i-1].max;d
+		}
+		for(int i=1;i<5;i++) {
+			for(int j=1;j<5;j++) {
+				t1=map[i][j-1].max+map[i][j-1].right;
+				t2=map[i-1][j].max+map[i-1][j].down;
+				if(t1>t2) {
+					map[i][j].max=t1;
+				}else {
+					map[i][j].max=t2;
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		}
+
+}

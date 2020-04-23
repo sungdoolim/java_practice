@@ -1,0 +1,8 @@
+package week6;
+
+public class node {
+
+	node left;
+	node right;
+	int value;
+}

@@ -1,0 +1,91 @@
+//2015112120 임성두
+package week6;
+
+import java.util.Scanner;
+
+public class no1 {
+	node head=new node();
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc=new Scanner(System.in);
+	
+		String s;
+		while(true) {
+		s=sc.next();
+		btree(s);
+		}
+	}
+	static void btree(String s) {
+		s.charAt(0);
+		int v;
+		switch(s.charAt(0)) {
+		case '+':
+			s=s.substring(1, s.length());
+			System.out.println(s);
+			v=Integer.parseInt(s);
+			
+			break;
+			
+			
+			
+		case '-':
+			break;
+			
+			
+			
+		case '?':
+			break;
+			
+		}
+	}
+
+	node find_link(int v){
+		node tmp=new node();
+		node pointer=new node();
+		pointer=head;
+		tmp=head;
+		
+		
+		while(true) {
+			if(pointer==null) {
+				pointer.value=v;
+				
+				
+			}
+		if(tmp.value>v) {
+			pointer=tmp.left;
+		}
+		else {
+			pointer=tmp.right;
+		}
+		}
+		return head;
+		
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
