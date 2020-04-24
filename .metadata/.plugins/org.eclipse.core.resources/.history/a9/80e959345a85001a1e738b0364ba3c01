@@ -1,0 +1,305 @@
+//2015112120 임성두
+package week6;
+
+import java.util.Scanner;
+
+public class no1 {
+	static node head=new node();
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc=new Scanner(System.in);
+	
+		String s;
+		while(true) {
+		s=sc.next();
+		if(s.charAt(0)=='q')
+			print(head);
+		else if(s.charAt(0)=='p')
+			show();
+		else if(s.charAt(0)=='Q')
+				break;
+
+		//System.out.println(s.charAt(0));
+		btree(s);
+		}
+
+		print(head);
+	}
+	
+	static void show() {
+		if (head == null)
+		{System.out.println("empty");
+		}
+		else
+		{
+			System.out.println();
+			showSub(head,1);
+			System.out.println();
+			
+		}
+	}
+	static void showSub(node p,int level) {
+		int i;
+
+		if (p != null)
+		{
+			showSub(p.right, level + 1);
+			for (i = 0; i < level; i++)
+			{
+				System.out.print("    ");
+			}
+			System.out.print(" "+p.value);
+			
+			if ((p.left != null) && (p.right != null))
+			{
+				System.out.print("<");
+			}
+			else if (p.right != null)
+			{
+				System.out.print("/");			}
+			else if (p.left != null)
+			{
+				System.out.print("\\");
+			}
+			System.out.println();
+			showSub(p.left, level + 1);
+		}
+	}
+	
+	
+	
+	static void btree(String s) {
+		s.charAt(0);
+		int v;
+		switch(s.charAt(0)) {
+		case '+':
+			s=s.substring(1, s.length());
+			v=Integer.parseInt(s);
+			insert(v);
+			
+			
+			break;
+			
+			
+			
+		case '-':
+			s=s.substring(1, s.length());
+			v=Integer.parseInt(s);
+			del(v);
+			
+			break;
+			
+			
+			
+		case '?':
+			s=s.substring(1, s.length());
+			v=Integer.parseInt(s);
+			find(v);
+			
+			break;
+			
+		}
+	}
+
+	static void del(int v) {
+		
+		node tmp=find(v);// 찾는 노드의 부모 노드를 가져옵니다, 즉 밑에 t의 부모 노드 입니다.
+		node t;
+		boolean b;// 부모 노드의 right를 삭제 하는 것이면 true , left라면 false입니다.
+		
+		
+		
+		
+		
+		if(tmp.right!=null&&tmp.right.value==v)
+			{t=tmp.right;
+			tmp.right=null;
+			b=true;}
+		else
+			{t=tmp.left;
+			tmp.left=null;
+			b=false;}
+		// 정말로 찾은 노드는 t 입니다.
+		//print(tmp);
+		
+		
+		// right 노드 가 없으면 left노드가 삭제하는 노드 대신 연결됩니다.
+		if(t.right==null) {
+		
+			 if(b) {
+				if(t.left!=null)
+				tmp.right=t.left;
+			}else {
+				if(t.left!=null)
+				tmp.left=t.left;
+			}
+		}
+		
+		
+		// right는 있는데 right의 left가 없는 경우, right가 삭제하는 노드 대신 연결되며 
+		//삭제된 노드의 right를 대신한 노드의 right에 연결합니다.
+		else if(t.right!=null&&t.right.left==null) {
+			if(b) {
+
+				tmp.right=t.right;
+				if(t.left!=null)
+				{tmp.right.left=t.left;}
+			}else {
+				tmp.left=t.right;
+				if(t.left!=null)
+				{tmp.left.left=t.left;}
+			}
+		}
+		
+		// 그외 경우
+		//left중에 가장 큰 값이나, right중에 가장 큰 값을 대신으로 합니다.
+		else {
+			node point=t.right;
+			while(point.left!=null) {
+				point=point.left;
+			}System.out.println(point.value);
+			if(b) {
+				tmp.right=t;
+				del(point.value);
+				tmp.right=point;
+				point.left=t.left;
+				point.right=t.right;
+			}else {
+				tmp.left=t;
+				del(point.value);
+				tmp.left=point;
+				point.left=t.left;
+				point.right=t.right;
+			}
+		}
+		
+	}
+	static void print(node p) {
+		System.out.println(p.value);
+		if(p.left!=null) {
+			print(p.left);
+		}
+		if(p.right!=null) {
+			print(p.right);
+		}
+	
+	}
+	static node find(int v) {// 값을 가진 노드의 정보를 출력합니다. 
+		node tmp=head;
+		node pointer=head;
+		while(true) {
+			if(tmp.value==v) {// 찾게 되면 정보를 출력합니다.
+				System.out.println("Retrived key = "+v);
+				System.out.print("left child is ");
+			
+			if(tmp.left!=null)
+				System.out.println(tmp.left.value);
+			else
+				System.out.println("none");
+			
+			System.out.print("right child is ");
+			if(tmp.right!=null)
+			System.out.println(tmp.right.value);
+			else
+				System.out.println("none");
+			
+			break;
+			}else {// 현 노드가 찾는 노드가 값의 비교 후에 아니라면 계속 탐색합니다.
+				if(tmp.value>v) {// 삽입하려는 값과 현 노드의 값과 비교합니다.
+					if(tmp.left!=null) {// 작으면 left,
+						pointer=tmp;
+						tmp=tmp.left;
+						
+					}else {// 값을 넣을 곳을 찾고 넣으면 메서드를 종료합니다.
+						System.out.println("찾는 노드 없음!");
+						break;
+					}
+					}
+					else {//크면 right입니다
+						if(tmp.right!=null) {
+							pointer=tmp;
+							tmp=tmp.right;
+							
+						}else {
+							System.out.println("찾는 노드 없음!");
+							break;
+						}
+					}
+			}
+			
+		}
+		return pointer;
+	}
+	static void insert(int v){
+		node tmp;
+		tmp=head;
+		if(tmp.value==-1) {
+			// 임의의 값인 -1이 head에 있다면 비어있는 것으로 간주하고 head에 값을 넣습니다.
+			tmp.value=v;
+			return;
+		}
+		while(true) {
+			//System.out.println(tmp.value);
+		
+		if(tmp.value>v) {// 삽입하려는 값과 현 노드의 값과 비교합니다.
+		if(tmp.left!=null) {// 작으면 left,
+			tmp=tmp.left;
+		}else {// 값을 넣을 곳을 찾고 넣으면 메서드를 종료합니다.
+			tmp.left=new node();
+			tmp.left.value=v;
+			break;
+		}
+		}
+		else {//크면 right입니다
+			if(tmp.right!=null) {
+				tmp=tmp.right;
+			}else {
+				tmp.right=new node();
+				tmp.right.value=v;
+				break;
+				
+			}
+		}
+		}
+		
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+/*
+ 
++20
++6
++2
++4
++16
++10
++8
++12
++14
++9
+
+ */
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+package week6;
+
+public class bonus {
+
+	public static void main(String[] args) {
+		bonus_node node=new bonus_node();
+		System.out.println(node.r);
+
+	}
+
+}
