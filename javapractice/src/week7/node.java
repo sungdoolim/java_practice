@@ -11,6 +11,6 @@ public class node {
 		right=null;
 		p=null;
 		value=-1;
-		color=0;//-1은 black, 1은 red입니다
+		color=1;//-1은 black, 1은 red입니다
 	}
 }
