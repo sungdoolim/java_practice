@@ -137,9 +137,21 @@ public class no3 {
 				}
 			}//System.out.println("head: "+head.value);
 
+		finddoublered();
+		
 		
 	}
-
+	static void finddoublered() {
+		node tmp=head;
+		while(tmp!=null) {
+			if(tmp.left.color+tmp.color==-2) {
+				solve(tmp.p,tmp,tmp.left);
+			}
+			else if(tmp.right.color+tmp.color==-2) {
+				solve(tmp.p,tmp,tmp.right);
+			}
+		}
+	}
 	static node solve(node grandp,node parent,node child) {
 	
 		if(parent.color==1&&child.color==1) {

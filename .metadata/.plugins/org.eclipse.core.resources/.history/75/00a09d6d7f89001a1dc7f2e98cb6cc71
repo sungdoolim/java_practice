@@ -139,7 +139,6 @@ public class no3 {
 
 		
 	}
-
 	static node solve(node grandp,node parent,node child) {
 	
 		if(parent.color==1&&child.color==1) {
@@ -160,7 +159,7 @@ public class no3 {
 		//	node tmp=parent;
 			if(GLorR) {// 지금 parent 가 grandp의 left라면
 				
-				 if(grandp.right!=null&&grandp.right.color==1) {//삼촌노드가 적색이라면 grandp의 노드는 흑색 parent와 삼촌을 적색으로 합니다
+				 if(grandp!=null&&grandp.right.color==1) {//삼촌노드가 적색이라면 grandp의 노드는 흑색 parent와 삼촌을 적색으로 합니다
 					grandp.color=1;
 					//parent.color=-1;
 					grandp.left.color=-1;
@@ -172,7 +171,6 @@ public class no3 {
 						child.color=-1;
 						grandp.color=1;
 						LtoR_Rotate(grandp.p, grandp, child);
-						
 					}
 					else {
 					//case3의 경우의 처리
@@ -187,7 +185,7 @@ public class no3 {
 			
 			
 			else {// 위와 left/right의 차이만 있고 동일한 알고리즘입니다.
-				if(grandp.left!=null&&grandp.left.color==1) {//삼촌노드가 적색이라면 grandp의 노드는 흑색 parent와 삼촌을 적색으로 합니다
+				if(grandp!=null&&grandp.left.color==1) {//삼촌노드가 적색이라면 grandp의 노드는 흑색 parent와 삼촌을 적색으로 합니다
 					grandp.color=1;
 					parent.color=-1;
 					grandp.left.color=-1;	
@@ -207,8 +205,10 @@ public class no3 {
 				}
 		
 			}
-			
 		
+			
+			
+			
 		}
 
 		node tmp=parent;
@@ -231,11 +231,16 @@ public class no3 {
 		parent.p=child;
 		
 		if(grandp!=null) {
+			
+		
+			
 			boolean GLorR;
-			if(grandp.left==null) {GLorR=false;}
-			else if(grandp.right==null) {GLorR=true;}
+			if(grandp.left!=null) {GLorR=true;}
+			else if(grandp.right!=null) {GLorR=false;}
 			else if(grandp.left.value==parent.value) {GLorR=true;}
 			else {GLorR=false;}
+			
+		
 		if(GLorR) {
 			grandp.left=child;
 		}else {
@@ -253,11 +258,11 @@ public class no3 {
 		child.right=parent;
 		child.p=parent.p;
 		parent.p=child;
-		
 		if(grandp!=null) {
+
 			boolean GLorR;
-			if(grandp.left==null) {GLorR=false;}
-			else if(grandp.right==null) {GLorR=true;}
+			if(grandp.left!=null) {GLorR=true;}
+			else if(grandp.right!=null) {GLorR=false;}
 			else if(grandp.left.value==parent.value) {GLorR=true;}
 			else {GLorR=false;}
 		if(GLorR) {

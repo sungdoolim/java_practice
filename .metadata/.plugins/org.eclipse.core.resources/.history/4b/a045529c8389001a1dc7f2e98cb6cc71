@@ -139,10 +139,9 @@ public class no3 {
 
 		
 	}
-
 	static node solve(node grandp,node parent,node child) {
 	
-		if(parent.color==1&&child.color==1) {
+		while(parent.color==1&&child.color==1) {
 			boolean GLorR;
 			if(grandp==null)System.out.println("null?");
 			if(grandp.left!=null) {GLorR=true;}
@@ -207,8 +206,10 @@ public class no3 {
 				}
 		
 			}
-			
 		
+			
+			
+			
 		}
 
 		node tmp=parent;
