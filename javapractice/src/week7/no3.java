@@ -1,35 +1,8 @@
+//2015112120 임성두
 package week7;
 
 import java.util.Scanner;
 
-/*
-+20
-+15
-+14
-+12
-+13
-+1
-
-+15
-+3
-+17
-+2
-+8
-+18
-+5
-+10
-
-
-+15
-+7
-+17
-+16
-+2
-+1
-+4
-+5
-+3
- */
 public class no3 {
 
 	static node head=new node();
@@ -42,10 +15,8 @@ public class no3 {
 		while(true) {
 			// 입력 받은 문자가 p 나 q일때, 각 트리 출력과 종료입니다.
 		s=sc.next();
-		 if(s.equals("pp")) {
-			prints(head);
-		}
-		 else if(s.charAt(0)=='p')
+		 
+		  if(s.charAt(0)=='p')
 		{	show();}
 		
 		else if(s.charAt(0)=='q')
@@ -55,18 +26,6 @@ public class no3 {
 		show();
 	}
 	
-	static void print(node t) {
-
-		System.out.print(t.value+" ");
-		System.out.print(t.left.value+" ");
-		System.out.print(t.right.value+" ");
-
-		t=t.left;
-		System.out.print(t.left.value+" ");
-		System.out.print(t.right.value+" ");
-		System.out.println(t.left.right.value);//얘가 문제
-
-	}
 	static void prints(node t) {
 		if(t==null)
 			return;
@@ -140,22 +99,38 @@ public class no3 {
 		
 	}
 
+	static boolean isleft(node grandp, node parent) {
+		boolean GLorR;
+		if(grandp==null)System.out.println("null?");
+		if(grandp.left==null) {GLorR=false;}
+		else if(grandp.right==null) {GLorR=true;}
+		else if(grandp.left.value==parent.value) {GLorR=true;}
+		else {GLorR=false;}
+		//true라면 지금 parent는 grandp의 left입니다
+	//	boolean LorR=parent.left.value==child.value;//true라면 지금 child는 parent의 left입니다.
+		/*boolean LorR;				
+		if(parent.left!=null) {LorR=true;}
+		else if(parent.right!=null) {LorR=false;}
+		else if(parent.left.value==child.value) {LorR=true;}
+		else {LorR=false;}*/
+	return GLorR;
+	}
 	static node solve(node grandp,node parent,node child) {
-	
+		
+		System.out.println("\n child: "+child.value);
+		if(parent!=null)
+			System.out.println("\n parent: "+parent.value);
+		
+		if(grandp!=null)
+			System.out.println("\n grandp: "+grandp.value);
+		
+		show();
+		
+		
 		if(parent.color==1&&child.color==1) {
-			boolean GLorR;
-			if(grandp==null)System.out.println("null?");
-			if(grandp.left!=null) {GLorR=true;}
-			else if(grandp.right!=null) {GLorR=false;}
-			else if(grandp.left.value==parent.value) {GLorR=true;}
-			else {GLorR=false;}
-			//true라면 지금 parent는 grandp의 left입니다
-		//	boolean LorR=parent.left.value==child.value;//true라면 지금 child는 parent의 left입니다.
-			boolean LorR;				
-			if(parent.left!=null) {LorR=true;}
-			else if(parent.right!=null) {LorR=false;}
-			else if(parent.left.value==child.value) {LorR=true;}
-			else {LorR=false;}
+			System.out.println("interrupt");
+			boolean GLorR=isleft(grandp,parent);
+			boolean LorR=isleft(parent,child);
 
 		//	node tmp=parent;
 			if(GLorR) {// 지금 parent 가 grandp의 left라면
@@ -168,6 +143,7 @@ public class no3 {
 				}
 				 else if(grandp.right==null||grandp.right.color!=1) {//노드가 없거나 흑색이라면
 					if(!LorR) {// case 2라면 case3을 만들기위해 rotate
+						System.out.println("case2");
 						RtoL_Rotate(grandp,parent,child);
 						child.color=-1;
 						grandp.color=1;
@@ -175,6 +151,7 @@ public class no3 {
 						
 					}
 					else {
+						System.out.println("case3");
 					//case3의 경우의 처리
 					parent.color=-1;
 					grandp.color=1;
@@ -207,16 +184,39 @@ public class no3 {
 				}
 		
 			}
+
+			System.out.println("\n child: "+child.value);
+			if(parent!=null)
+				System.out.println("\n parent: "+parent.value);
 			
+			if(grandp!=null)
+				System.out.println("\n grandp: "+grandp.value);
+			
+			show();
+			
+			
+
 		
 		}
+		
+		
+		
 
-		node tmp=parent;
-		while(tmp.p!=null) {
-			tmp=tmp.p;
-		}
-			tmp.color=-1;
-		return tmp;//head를 리턴합니다.
+		if(child.p!=null)
+		 child=child.p;
+		
+		
+		 parent=child.p;
+		// grandp=parent.p;
+		 if(parent!=null) {
+		 grandp=parent.p;}
+		 if(parent!=null) {
+			 if(parent==head) {
+				 parent.color=-1;
+			 }
+		  return solve(grandp,parent,child);
+		 }else
+		return child;//head를 리턴합니다.
 		
 		
 	}
@@ -242,7 +242,13 @@ public class no3 {
 			grandp.right=child;
 		}
 		}
+		System.out.println("\n child: "+child.value);
+		if(parent!=null)
+			System.out.println("\n parent: "+parent.value);
 		
+		if(grandp!=null)
+			System.out.println("\n grandp: "+grandp.value);
+		show();
 	}
 	static void LtoR_Rotate(node grandp,node parent,node child){
 
@@ -265,7 +271,16 @@ public class no3 {
 		}else {
 			grandp.right=child;
 		}
+		}else {
+			head=child;
 		}
+		System.out.println("\n child: "+child.value);
+		if(parent!=null)
+			System.out.println("\n parent: "+parent.value);
+		
+		if(grandp!=null)
+			System.out.println("\n grandp: "+grandp.value);
+		show();
 	}
 	
 
@@ -317,3 +332,33 @@ public class no3 {
 		}
 	}
 }
+
+
+/*
++20
++15
++14
++12
++13
++1
+
++15
++3
++17
++2
++8
++18
++5
++10
+
+
++15
++7
++17
++16
++2
++1
++4
++5
++3
+ */
