@@ -68,7 +68,6 @@ public class no3 {
 			grandp=parent.p;
 			//if(grandp!=null)
 			//{System.out.println(grandp.value);}
-				
 			if(parent.value>v) {// 삽입하려는 값과 현 노드의 값과 비교합니다.
 				if(parent.left!=null) {// 작으면 left로 이동하여 다시 비교를 합니다.
 					parent=parent.left;
@@ -94,9 +93,7 @@ public class no3 {
 				
 					}
 				}
-			}//System.out.println("head: "+head.value);
-
-		
+			}//System.out.println("head: "+head.value);		
 	}
 
 	static boolean isleft(node grandp, node parent) {
@@ -107,25 +104,9 @@ public class no3 {
 		else if(grandp.left.value==parent.value) {GLorR=true;}
 		else {GLorR=false;}
 		//true라면 지금 parent는 grandp의 left입니다
-	//	boolean LorR=parent.left.value==child.value;//true라면 지금 child는 parent의 left입니다.
-		/*boolean LorR;				
-		if(parent.left!=null) {LorR=true;}
-		else if(parent.right!=null) {LorR=false;}
-		else if(parent.left.value==child.value) {LorR=true;}
-		else {LorR=false;}*/
 	return GLorR;
 	}
 	static node solve(node grandp,node parent,node child) {
-		
-		System.out.println("\n child: "+child.value);
-		if(parent!=null)
-			System.out.println("\n parent: "+parent.value);
-		
-		if(grandp!=null)
-			System.out.println("\n grandp: "+grandp.value);
-		
-		show();
-		
 		
 		if(parent.color==1&&child.color==1) {
 			System.out.println("interrupt");
@@ -134,8 +115,8 @@ public class no3 {
 
 		//	node tmp=parent;
 			if(GLorR) {// 지금 parent 가 grandp의 left라면
-				
-				 if(grandp.right!=null&&grandp.right.color==1) {//삼촌노드가 적색이라면 grandp의 노드는 흑색 parent와 삼촌을 적색으로 합니다
+				 if(grandp.right!=null&&grandp.right.color==1) {
+					 //삼촌노드가 적색이라면 grandp의 노드는 흑색 parent와 삼촌을 적색으로 합니다
 					grandp.color=1;
 					//parent.color=-1;
 					grandp.left.color=-1;
@@ -157,9 +138,7 @@ public class no3 {
 					grandp.color=1;
 					LtoR_Rotate(grandp.p, grandp, parent);
 					}
-					
 				}
-				
 			}
 			
 			
@@ -185,18 +164,6 @@ public class no3 {
 		
 			}
 
-			System.out.println("\n child: "+child.value);
-			if(parent!=null)
-				System.out.println("\n parent: "+parent.value);
-			
-			if(grandp!=null)
-				System.out.println("\n grandp: "+grandp.value);
-			
-			show();
-			
-			
-
-		
 		}
 		
 		
@@ -204,7 +171,6 @@ public class no3 {
 
 		if(child.p!=null)
 		 child=child.p;
-		
 		
 		 parent=child.p;
 		// grandp=parent.p;
@@ -242,13 +208,6 @@ public class no3 {
 			grandp.right=child;
 		}
 		}
-		System.out.println("\n child: "+child.value);
-		if(parent!=null)
-			System.out.println("\n parent: "+parent.value);
-		
-		if(grandp!=null)
-			System.out.println("\n grandp: "+grandp.value);
-		show();
 	}
 	static void LtoR_Rotate(node grandp,node parent,node child){
 
@@ -274,13 +233,6 @@ public class no3 {
 		}else {
 			head=child;
 		}
-		System.out.println("\n child: "+child.value);
-		if(parent!=null)
-			System.out.println("\n parent: "+parent.value);
-		
-		if(grandp!=null)
-			System.out.println("\n grandp: "+grandp.value);
-		show();
 	}
 	
 
@@ -308,12 +260,18 @@ public class no3 {
 		 */
 		int i;
 		if (p != null){
+			String Color;
+			if(p.color==1)
+				Color="R";
+			else
+				Color="B";
 			showSub(p.right, level + 1);// 맨 right쪽으로 이동하여서 출력해야 합니다
 			for (i = 0; i < level; i++)// 순환적으로 함수를 들어갈 때 마다 level을 올려야 합니다
 			{
 				System.out.print("\t");//트리그릴때 여유를 두기위해 공백을 주었습니다
 			}
-			System.out.print(" "+p.value+"("+p.color+")");
+			
+			System.out.print(" "+p.value+"("+Color+")");
 			
 			if ((p.left != null) && (p.right != null))
 			{// 자식노드 둘이 전부 null이 아니라면 양쪽으로 가지를 뻗어야 합니다
