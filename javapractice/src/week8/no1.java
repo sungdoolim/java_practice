@@ -27,7 +27,6 @@ public class no1 {
 		
 		long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
 		bruteforce(text,pattern,tl,pl);
-		
 		long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
 		long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
 
@@ -38,7 +37,6 @@ public class no1 {
 		
 		beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
 		rabinkarp(text,pattern,tl,pl);
-		
 		 afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
 		 msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
 
@@ -97,46 +95,45 @@ public class no1 {
 	
 	static int rabinkarp(String text,String pattern,int tl,int pl) {
 
-		long hashp=0;
-		long [] hasht=new long[tl-pl+2];
+		int hashp=0;
+		int t_p=tl-pl;
+		double [] hasht=new double[t_p+2];
+		double b=0;
 		//System.out.println(tl-pl+2);
-		long n;
-		long mod=31;
-		
-		
+		int mod=97;
 		for(int i=0;i<pl;i++) {
-			hashp+=(long)((long)pattern.charAt(i)* Math.pow(2,pl-i-1));
-			hasht[0]+=(long)((long)text.charAt(i)* Math.pow(2,pl-i-1));
-
+			hashp+=(pattern.charAt(i)* Math.pow(2,pl-i-1));
+			hasht[0]+=(text.charAt(i)* Math.pow(2,pl-i-1));
 			//System.out.println(i+" "+(int)pattern.charAt(i)+","+ (int)Math.pow(2,pl-i-1));
 		}
 		hashp%=mod;
-	hasht[0]%=mod;
-		System.out.println(hashp+","+hasht[0]);
+		hasht[0]%=mod;
+		//System.out.println(hashp+","+hasht[0]);
 	//	System.out.println(hashp);
-	for(int i=1;i<=tl-pl;i++) {
+	for(int i=1;i<=t_p;i++) {
 //for(int i=1;i<10;i++) {	
-	long b=(long)((long)text.charAt(i-1)* Math.pow(2,pl-1))%mod;
-	if(b<0)b+=mod;
+	 b=(text.charAt(i-1)* Math.pow(2,pl-1))%mod;
+	//if(b<0)b+=mod;
+	
 				hasht[i]=((hasht[i-1]-b)*2)%mod
-						+(long)text.charAt(i+pl-1)%mod;
+						+text.charAt(i+pl-1)%mod;
 				if(hasht[i]>=mod)
 					hasht[i]%=mod;
-				if(hasht[i]<0)
+				else if(hasht[i]<0)
 					hasht[i]+=mod;
 				//System.out.println(hasht[i]);
 				//System.out.println(i-1+" : "+hasht[i-1]);
 				//System.out.println(b);
-				//System.out.println((long)text.charAt(i+pl-1)%mod);
+				//System.out.println((int)text.charAt(i+pl-1)%mod);
 				//System.out.println(hasht[i]);
-				//System.out.println((long)((long)text.charAt(i-1)* Math.pow(2,pl-1)));
+				//System.out.println((int)((int)text.charAt(i-1)* Math.pow(2,pl-1)));
 				//hasht[i-1]%=mod;
 
 		}
 	//	hasht[pl-1]%=mod;
 	
 		//System.out.println(hasht[6]);
-		 for(int i=0;i<=tl-pl;i++) {
+		 for(int i=0;i<=t_p;i++) {
 			
 			
 			if(hasht[i]==hashp) {
@@ -164,6 +161,9 @@ public class no1 {
 		return 0;
 		
 	}
+	
+	
+	
 	static void kmp(String text,String pattern ,int tl,int pl) {
 	/*	text="acacabacacabacadcac";
 		pattern="acad";
