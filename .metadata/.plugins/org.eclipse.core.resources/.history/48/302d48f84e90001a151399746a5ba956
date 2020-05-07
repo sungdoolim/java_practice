@@ -1,0 +1,10 @@
+
+public class prac {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long a=(longMath.pow(2, 20)*150;
+System.out.println(a);
+	}
+
+}
