@@ -95,54 +95,46 @@ public class no1 {
 	
 	
 	static int rabinkarp(String text,String pattern,int tl,int pl) {
-		long hashp=0;
-		double [] hasht=new double[tl-pl+2];
-		double mod=31;
+
+		int hashp=0;
+		int [] hasht=new int[tl-pl+2];
 		//System.out.println(tl-pl+2);
-		
+		int n;
 		
 		
 		for(int i=0;i<pl;i++) {
-			hashp+=(double)pattern.charAt(i)*((double) Math.pow(36,pl-i-1));
-			System.out.println(hashp);
-			hasht[0]+=(double)text.charAt(i)*((double) Math.pow(36,pl-i-1));
-			
+			hashp+=(int)pattern.charAt(i)*(int) Math.pow(36,pl-i-1);
+
+			hasht[0]+=(int)text.charAt(i)*(int) Math.pow(36,pl-i-1);
 		}
-		System.out.println(hashp);
-		hashp%=mod;
-		System.out.println(hashp+","+hasht[0]%mod);
-		hasht[0]%=13;
+	
+		
 		
 	//	System.out.println(hashp);
-		for(int i=1;i<=tl-pl;i++) {		
-			//	hasht[i]+=(int) Math.pow((int)text.charAt(j),pl-n);
-		hasht[i]=(hasht[i-1]-(int)text.charAt(i-1)*((int) Math.pow(36,pl-1)))*36
-						+(int)text.charAt(i+pl-1);
-				hasht[i-1]%=mod;
-				//System.out.println(hasht[i-1]);
-				//hasht[i]*
+		for(int i=1;i<tl-pl;i++) {
+			n=0;
+			for(int j=i;j<i+pl;j++) {
+				hasht[i]+=(int) Math.pow((int)text.charAt(j),pl-n);
+				n++;
+			}
 		//	System.out.println("\nhasht "+i+": "+hasht[i]);
 		}
-		//System.out.println(hashp+","+hasht[98]);
+		System.out.println(hashp+","+hasht[98]);
 		
-		 for(int i=0;i<=tl-pl;i++) {
+		test: for(int i=0;i<tl-pl;i++) {
 			
 			if(hasht[i]==hashp) {
-				System.out.println(hasht[i]);
 				//return i;
 
 				//System.out.println("rabinkarf :"+i+"번째 인덱스에서 발견");
-				for(int j=i;j<i+pl;j++) {
-					System.out.println(pattern.charAt(j-i)+","+text.charAt(j));
+				for(int j=i;j<pl;j++) {
+					
 					if(pattern.charAt(j-i)!=text.charAt(j)) {
-						break;
-					}else {
-						if(j==i+pl-1)
-						{System.out.println("rabinkarf:"+j+"번째 인덱스에서 발견");}
+						continue test;
 					}
 				}
 
-				
+				System.out.println("rabinkarf :"+i+"번째 인덱스에서 발견");
 				
 			}
 			
