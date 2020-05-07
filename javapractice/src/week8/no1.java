@@ -112,23 +112,24 @@ public class no1 {
 		}
 		hashp%=mod;
 	System.out.println(hashp%31+","+hasht[0]%31);
-		
-		
+	hasht[0]%=mod;
+		System.out.println(hashp+","+hasht[0]);
 	//	System.out.println(hashp);
-		for(int i=1;i<=tl-pl;i++) {
-	//for(int i=1;i<5;i++) {	
-				hasht[i]=(hasht[i-1]-(long)((long)text.charAt(i-1)* Math.pow(2,pl-1)))*2
-						+(long)text.charAt(i+pl-1);
-				hasht[i-1]%=mod;
-				//System.out.println("\n"+hasht[i-1]);
-			//	System.out.println((long)((long)text.charAt(i-1)* Math.pow(2,pl-1)));
-			//	System.out.println((long)text.charAt(i+pl-1));
-			//	System.out.println(hasht[i]);
-			//	System.out.println((long)((long)text.charAt(i-1)* Math.pow(2,pl-1)));
+	//	for(int i=1;i<=tl-pl;i++) {
+for(int i=1;i<5;i++) {	
+			
+				hasht[i]=(hasht[i-1]-((long)((long)text.charAt(i-1)* Math.pow(2,pl-1)))%mod)*2
+						+(long)text.charAt(i+pl-1)%mod;
+				//System.out.println(hasht[i]);
+				System.out.println("\n"+hasht[i-1]);
+				System.out.println(((long)((long)text.charAt(i-1)* Math.pow(2,pl-1)))%mod);
+				System.out.println((long)text.charAt(i+pl-1)%mod);
+				System.out.println(hasht[i]);
+				//System.out.println((long)((long)text.charAt(i-1)* Math.pow(2,pl-1)));
 				//hasht[i-1]%=mod;
 
 		}
-		hasht[pl-1]%=mod;
+	//	hasht[pl-1]%=mod;
 	
 		//System.out.println(hasht[6]);
 		 for(int i=0;i<=tl-pl;i++) {
