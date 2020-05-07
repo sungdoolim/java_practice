@@ -10,8 +10,8 @@
 <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthSeparatorUI"/>
 <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthSplitPaneUI"/>
 <fullyQualifiedTypeName name="java.security.Provider"/>
 <fullyQualifiedTypeName name="java.security.Security"/>
+<fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthSeparatorUI"/>
 </qualifiedTypeNameHistroy>

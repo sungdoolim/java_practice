@@ -24,6 +24,7 @@ public class no3 {
 		redblack(s);
 		}
 		show();
+		sc.close();
 	}
 	
 	static void prints(node t) {

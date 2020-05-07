@@ -1,0 +1,174 @@
+package week8;
+
+import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
+//2015112120 임성두
+
+public class no1 {
+
+	public static void main(String[] args) {
+		long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
+		
+		Scanner sc=new Scanner(System.in);
+		String text="ekdmcljekdmcosk2ekdm015sjwldcj12048ysungd20lf3iekdmc1lim92015112120sungdoolimskekdefdmcdoo201dh11212cjndowkjdigjekdmckhsklikunklim";
+		String pattern="2015112120sungddolim";
+		System.out.println(text.charAt(12));
+		System.out.println((int)text.charAt(12));
+		System.out.println(Long.toString((long)(text.charAt(12)),36));
+		//String pattern=sc.next();
+		//String text=sc.next();
+		int tl=text.length();
+		int pl=pattern.length();
+		
+		int index=bruteforce(text,pattern,tl,pl);
+		System.out.println(index);//44나오면 됨
+		
+		
+		int index2=rabinkarp(text,pattern,tl,pl);
+		System.out.println(index2);
+	
+		String s="abacaaba";
+		int []t=maketable(s,	s.length());
+		for(int i=0;i<t.length;i++) {
+			System.out.print(t[i]+" ");
+		}
+		System.out.println("mt test ");
+		kmp(text,pattern,tl,pl);
+		System.out.println("\n");
+		
+	
+		
+		long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+		long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
+		System.out.println("\n\n bubble sort 걸린 시간 : "+msecDiffTime+"milliseconds\n");
+		
+		
+
+	}
+	
+	static int bruteforce(String text,String pattern,int tl,int pl) {
+		int count=0;
+		int t;
+		
+		for(int i=0;i<tl;i++) {
+			t=i;
+			for(int j=0;j<pl;j++) {
+				if(pattern.charAt(j)!=text.charAt(t)) {
+					break;
+				}count++;t++;
+				if(count==pattern.length()) {
+					return i;
+				}
+			}
+		}return 0;
+	}
+	
+	
+	
+	static int rabinkarp(String text,String pattern,int tl,int pl) {
+
+		int hashp=0;
+		int [] hasht=new int[tl-pl+2];
+		//System.out.println(tl-pl+2);
+		int n;
+		
+		
+		for(int i=0;i<pl;i++) {
+			hashp+=(int) Math.pow((int)pattern.charAt(i),pl-i);
+		}
+	//	System.out.println(hashp);
+		for(int i=0;i<tl-pl;i++) {
+			n=0;
+			for(int j=i;j<i+pl;j++) {
+				hasht[i]+=(int) Math.pow((int)text.charAt(j),pl-n);
+				n++;
+			}
+		//	System.out.println("\nhasht "+i+": "+hasht[i]);
+		}
+		
+		
+		for(int i=0;i<tl-pl+2;i++) {
+			
+			if(hasht[i]==hashp)
+				return i;
+			
+		}
+		return 0;
+		
+	}
+	static void kmp(String text,String pattern ,int tl,int pl) {
+	/*	text="acacabacacabacadcac";
+		pattern="acad";
+		tl=text.length();
+		pl=pattern.length();
+		
+		*/
+		
+		System.out.println("t1:"+tl+"pl:"+pl);
+		int []pattern_table=maketable(pattern,pl);
+		for(int i=0;i<pl;i++) {
+			System.out.print(pattern_table[i]+" ");
+		}System.out.println("mk 나옴");
+		
+		int i=0,j=0;
+		test:while(true) {System.out.println(i+","+j);
+				while(pattern.charAt(i)!=text.charAt(j)) {
+					if(i==0) {
+						j++;
+					if(j==tl)break test;}
+					if(i-1>=0)
+					i=pattern_table[i-1];
+				}
+				i++;j++;
+				System.out.println("i :"+i);
+				if(i==pl)
+					break;
+				
+			}
+			System.out.println("index:"+j);
+		
+		
+		
+		
+		
+		
+		
+	}
+	static int[] maketable(String pattern,int pl) {
+	//	int tl=text.length();
+		int [] table=new int[pl];
+		int i=0,j=1;
+		while(true) {
+			if(i<0) 
+			{i=0;}
+			if(j==pl||i==pl)
+				break;
+				if(pattern.charAt(i)==pattern.charAt(j)) {
+					table[j]=i+1;
+					i++;j++;
+				}else {i=i-1;
+				//System.out.println(i);
+				if(i<0) {
+					i=0;j++;
+					continue;
+				}
+					do {
+					//System.out.println("??");
+						if(pattern.charAt(table[i])==pattern.charAt(j)) {
+							table[j]=table[i]+1;				
+							break;
+						}else{
+							i=table[i]-1;				
+						}
+					//	System.out.println(i);
+					}while(i>0);			
+				}
+				//System.out.println(i+","+j+","+table[j]);
+			}
+		//System.out.println("return");
+		return table;
+	}
+
+}
