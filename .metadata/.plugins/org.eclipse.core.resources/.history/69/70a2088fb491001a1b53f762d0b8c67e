@@ -1,0 +1,69 @@
+
+public class prac {
+
+	static Integer a=3;
+	public static void main(String[] args) {
+	
+		int[]numbers= {1,3,4,5,8,2,1,4,5,9,5};
+		String hand="right";
+		
+	System.out.println(solution(numbers,hand));
+	
+	
+	
+	
+	
+	}
+	   public static String solution(int[] numbers, String hand) {
+	        String answer = "";
+	        int numlen=numbers.length;
+	        int cursorl=10;
+	        int cursorr=12;
+	        int tl=0;
+	        int tr=0;
+	        for(int i=0;i<numlen;i++) {
+	        	if(numbers[i]==0) {
+        		numbers[i]=11;
+        		}
+	        	
+	        	
+	        	
+	        	if(numbers[i]%3==1) {
+	        		answer+="L";
+	        		cursorl=numbers[i];
+	        		
+	        		
+	        		
+	        	}else if(numbers[i]%3==0) {
+	        		answer+="R";
+	        		cursorr=numbers[i];
+	        		
+	        		
+	        		
+	        		
+	        	}else {
+	        		tl=numbers[i]-1;
+	        		tr=numbers[i]+1;
+	        		tl=Math.abs(cursorl-tl);
+	        		tr=Math.abs(cursorr-tr);
+	        		
+	        		if(tl>tr) {
+	        			answer+="L";
+	        		}else {
+	        			answer+="R";
+	        		}
+	        		
+	        		
+	        		
+	        	}
+	        }
+	        
+	        
+	        
+	        
+	        
+	        return answer;
+	    }
+
+}
+

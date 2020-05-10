@@ -1,0 +1,43 @@
+package week8;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+
+public class bonus {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+String d;
+int a;
+		
+		 PrintWriter pw;
+		try {
+			pw = new PrintWriter("C:/Users/bohee/Desktop/a.txt");
+			  for(int i=1; i<1000; i++) {
+		         
+		            a= (int) (Math.random()*100000000);
+		         
+		            pw.print(a);
+		        }
+		        pw.close();
+		        //
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      
+		  BufferedReader br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/a.txt"));
+	        while(true) {
+	            String line = br.readLine();
+	            if (line==null) break;
+	            System.out.println(line);
+	        }
+	        br.close();
+		
+		
+		
+	}
+	
+}

@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+
+public class prac2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+String a[]= {"AA","AB","AC","AA"};
+		solution(a);
+	
+		
+	}//   \\+ \\* -
+
+    public static int[] solution(String[] gems) {
+        int[] answer = {};
+        int gl=gems.length;
+        //String[]gem = new String[gl];
+        ArrayList<String>gem=new ArrayList<>();
+       gem.add(gems[0]);
+     //   String []
+        int count=0;
+        for(int i=0;i<gl;i++) {
+        for(int j=0;j<gem.size();j++) {
+        	
+        	System.out.println(gem.size());
+        	if(gem.contains(gems[i])) {
+        		break;
+        	}else {
+        		count++;
+        		gem.add(gems[i]);
+        		continue;
+        	}
+        }
+        	
+        	
+        	
+        }
+        System.out.println(count);
+        for(int i=0;i<gl;i++) {
+        	
+        }
+        
+        
+        
+        return answer;
+    }
+}
