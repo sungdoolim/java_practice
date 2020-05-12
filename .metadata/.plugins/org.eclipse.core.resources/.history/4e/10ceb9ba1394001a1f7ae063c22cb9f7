@@ -1,0 +1,27 @@
+
+public class BlockChainStarter {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		Transaction tr=new Transaction("staris","hama",30);
+		System.out.println(tr.getInfo());
+		
+		
+	/*	Block block=new Block(1,null,0,"데이터");
+		block.mine();
+		block.getinfo();
+		Block block2=new Block(2,block.getBlockHash(),0,"데이터");
+		block2.mine();
+		block2.getinfo();
+		Block block3=new Block(3,block2.getBlockHash(),0,"데이터");
+		block3.mine();
+		block3.getinfo();
+		Block block4=new Block(4,block3.getBlockHash(),0,"데이터");
+		block4.mine();
+		block4.getinfo();
+		*/
+	}
+
+}

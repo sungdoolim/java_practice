@@ -1,0 +1,14 @@
+
+public class BlockChainStarter {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		
+		Block block=new Block(1,0,"데이터");
+		block.getinfo();
+		
+	}
+
+}
