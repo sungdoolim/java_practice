@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class prj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String ref=null;
+		  BufferedReader br;
+			try {
+				br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/input.txt"));
+					 ref=br.readLine();				            			         		 	        
+			         br.close();
+				
+			} catch ( IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+}

@@ -13,7 +13,7 @@ public class trivial {
 		// TODO Auto-generated method stub
 	
 		String ref ="agctaagtccgtagctttgccgacgtcagcaaacgttcagggctcttgacaaccttgtctagcgatagcctagc";
-		ref=ref.toUpperCase();
+		//ref=ref.toUpperCase();
 		char[]dna= {'A','G','C','T'};
 			/*	try {	
 			 * PrintWriter pw;
@@ -94,8 +94,6 @@ public class trivial {
 				sc.close();
 				
 
-				System.out.println(ref);
-				System.out.println(mydna);
 				try {	
 					  PrintWriter pw;
 							pw = new PrintWriter("C:/Users/bohee/Desktop/output.txt");

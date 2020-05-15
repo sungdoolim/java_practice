@@ -1,0 +1,75 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class prj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String ref=null;
+		  BufferedReader br;
+			try {
+				br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/input.txt"));
+					 ref=br.readLine();				            			         		 	        
+			         br.close();
+				
+			} catch ( IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	 static void slide() {
+		
+		 
+		 
+		 
+	}
+	
+		static StringBuilder makeMyDna(StringBuilder ref,int k,int n,int y,char[] dna,String[]shortread) {
+			int indexcount=0;
+			int count=0;
+			boolean countb=false;
+			//int stindex=0;
+			int tmp;
+			int [][]store=new int[y][2];
+			for(int stindex=0;stindex<n;stindex++) {
+			for(int v=0;v<=ref.length()-k+1;v++) {
+				
+				tmp=v;
+				countb=true;
+				count=0;
+				for(int stl=0;stl<k;stl++,tmp++) {
+					if(shortread[stindex].charAt(stl)!=ref.charAt(tmp)) {
+
+						count++;
+						if(count>y) {
+							
+							countb=false;
+							break;
+						}
+						store[count-1][0]=stl;
+						store[count-1][1]=tmp;
+						
+					}
+				}
+				if(countb) {
+					for(int i=0;i<count;i++)
+					{System.out.println(store[i][1]+","+store[i][0]);
+						ref.setCharAt(store[i][1], shortread[stindex].charAt(store[i][0]));}
+					break;
+					
+				}
+			}
+			
+			
+			}
+		
+			return ref;
+			
+		}
+	
+	
+	
+
+}

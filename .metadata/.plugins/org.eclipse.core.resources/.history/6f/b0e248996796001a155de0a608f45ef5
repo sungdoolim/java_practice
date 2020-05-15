@@ -12,8 +12,8 @@ public class trivial {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
-		String ref ="agctaagtccgtagctttgccgacgtcagcaaacgttcagggctcttgacaaccttgtctagcgatagcctagc";
-		ref=ref.toUpperCase();
+		String ref = null;//="agctaagtccgtagctttgccgacgtcagcaaacgttcagggctcttgacaaccttgtctagcgatagcctagc";
+		//ref=ref.toUpperCase();
 		char[]dna= {'A','G','C','T'};
 			/*	try {	
 			 * PrintWriter pw;
@@ -50,7 +50,7 @@ public class trivial {
 				}
 				
 
-			      
+			      */
 				  BufferedReader br;
 				try {
 					br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/input.txt"));
@@ -60,12 +60,12 @@ public class trivial {
 				} catch ( IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				
 				
-		StringBuilder strref=new StringBuilder(ref);
-		
 		//StringBuilder strref=new StringBuilder(ref);
+		
+		StringBuilder strref=new StringBuilder(ref);
 				System.out.println(strref.length());
 				
 		
@@ -94,8 +94,6 @@ public class trivial {
 				sc.close();
 				
 
-				System.out.println(ref);
-				System.out.println(mydna);
 				try {	
 					  PrintWriter pw;
 							pw = new PrintWriter("C:/Users/bohee/Desktop/output.txt");

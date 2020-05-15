@@ -95,7 +95,6 @@ public class trivial {
 				
 
 				System.out.println(ref);
-				System.out.println(mydna);
 				try {	
 					  PrintWriter pw;
 							pw = new PrintWriter("C:/Users/bohee/Desktop/output.txt");
