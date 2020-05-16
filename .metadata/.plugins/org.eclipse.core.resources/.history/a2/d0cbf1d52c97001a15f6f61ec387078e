@@ -1,0 +1,180 @@
+package week9;
+//2015112120 임성두
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class trivial2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		String ref ="agctaagtccgtagctttgccgacgtcagcaaacgttcagggctcttgacaaccttgtctagcgatagcctagc";
+		ref=ref.toUpperCase();
+		char[]dna= {'A','G','C','T'};		
+		StringBuilder strref=new StringBuilder(ref);
+				System.out.println(strref.length());
+				long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기				
+				Scanner sc=new Scanner(System.in);
+				int k=sc.nextInt();
+				int n=sc.nextInt();
+				int y=sc.nextInt();
+			String []shortread=makeShortread(strref, k, n,y,dna);
+			System.out.println(strref);
+			try {	
+				  PrintWriter pw;
+						pw = new PrintWriter("C:/Users/bohee/Desktop/pracshort.txt");
+						for(int i=0;i<shortread.length;i++) {
+						pw.println(shortread[i]);}
+					        pw.close();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+
+		      
+			  BufferedReader br;
+				try {
+					String str;
+					br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/pracshort.txt"));
+					int i=0;
+					while(true) {
+						 str=br.readLine();	
+						 if(str==null)
+							 break;
+						 
+						// System.out.println(str);
+				shortread[i]=str;i++;
+					}br.close();
+					System.out.println("반복문 끝");
+					for(int j=0;j<shortread.length;j++) {
+						System.out.println(shortread[j]);
+					}
+				} catch ( IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			
+			
+			
+			StringBuilder mydna=makeMyDna(strref,k,n,y,dna,shortread);
+		//	System.out.println(ref);
+		//	System.out.println(mydna);
+			double count=0;
+			for(int i=0;i<ref.length();i++) {
+				if(ref.charAt(i)!=mydna.charAt(i)){
+					count++;
+				}
+			}System.out.println(count+"개의 불일치");
+				
+				
+
+				//System.out.println(ref);
+				//System.out.println(mydna);
+				try {	
+					  PrintWriter pw;
+							pw = new PrintWriter("C:/Users/bohee/Desktop/pracoutput.txt");
+				            pw.print(mydna);
+						    pw.close();
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+
+				long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+				double ra=(count/74)*100;
+				System.out.println("오차율 : "+ra+"입니다");
+				long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
+
+		
+				sc.close();
+	}
+	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,int y,char[] dna,String[]shortread) {
+		int indexcount=0;
+		int count=0;
+		boolean countb=false;
+		//int stindex=0;
+		int tmp;
+		int [][]store=new int[y][2];
+		for(int stindex=0;stindex<n;stindex++) {
+		for(int v=0;v<=ref.length()-k+1;v++) {
+			
+			tmp=v;
+			countb=true;
+			count=0;
+			for(int stl=0;stl<k;stl++,tmp++) {
+				if(shortread[stindex].charAt(stl)!=ref.charAt(tmp)) {
+
+					count++;
+					if(count>y) {
+						
+						countb=false;
+						break;
+					}
+					store[count-1][0]=stl;
+					store[count-1][1]=tmp;
+					
+				}
+			}
+			if(countb) {
+				for(int i=0;i<count;i++)
+				{//System.out.println(store[i][1]+","+store[i][0]);
+					ref.setCharAt(store[i][1], shortread[stindex].charAt(store[i][0]));}
+				break;
+				
+			}
+		}
+		
+		
+		}
+	
+		return ref;
+		
+	}
+	static String[] makeShortread(StringBuilder ref,int k,int n,int y,char[] dna) {
+	//int l=500000-k;
+		int l=ref.length()-k;
+		String [] shortread=new String[n];
+		StringBuilder strtmp;	
+		int randomtmp;
+		int yindex;
+		int tmp = 0;
+		for(int i=0;i<n;i++){
+			randomtmp=(int)(Math.random()*l);
+			//System.out.println(randomtmp);
+			shortread[i]="";
+			for(int j=0;j<k;j++) {
+				shortread[i]+=ref.charAt(randomtmp+j);
+			}
+			
+			//System.out.println(shortread[i]);
+			strtmp=new StringBuilder(shortread[i]);
+			//1System.out.println("builder : "+strtmp);
+			for(int m=0;m<y;m++) {
+				yindex=(int)(Math.random()*k);
+				//System.out.println("여기 바꾸자  : "+yindex);
+				while(dna[tmp]==shortread[i].charAt(yindex)) {
+				tmp=(int)(Math.random()*4);
+				}
+				strtmp.setCharAt(yindex, dna[tmp]);
+				shortread[i]=strtmp.toString();
+				for(int q=0;q<k;q++) {
+				ref.setCharAt(randomtmp+q, shortread[i].charAt(q));
+				}
+			//	System.out.println("바뀐 값 :"+shortread[i]);
+			}
+			
+		}
+		// 지금은 최소 0자리, 최대 3자리가 다를 수 있습니다.(랜덤으로 하기에 확률 적으로 최소보다는 최대가 나올 확률이 높습니다.)
+		
+		//System.out.println();
+		for(int i=0;i<n;i++) {
+		//	System.out.println(shortread[i]);
+		}
+		return shortread;
+		
+	}
+
+}

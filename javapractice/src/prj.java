@@ -23,18 +23,24 @@ public class prj {
 			
 
 			StringBuilder strref=new StringBuilder(ref);
-
+			System.out.println(strref.length());
 			Scanner sc=new Scanner(System.in);
 			double k=sc.nextInt();
 			int n=sc.nextInt();
 			double y=sc.nextInt();
 			char []dna= {'A','G','C','T'};
+			long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
+		
 			String []shortread=makeShortread(strref, k, n,y,dna);
 			sc.close();
 			
 			StringBuilder mydna=makeMyDna(strref,k,n,y,dna,shortread);
 			
 			
+			long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+			long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
+
+			System.out.println(msecDiffTime+"초");
 	}
 	
 	 static StringBuilder makeMyDna(StringBuilder ref,double k,int n,double y,char[] dna,String[]shortread) {
