@@ -13,8 +13,8 @@ public class trivial {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
-		String ref ="";
-	
+		String ref ="agctaagtccgtagctttgccgacgtcagcaaacgttcagggctcttgacaaccttgtctagcgatagcctagc";
+		ref=ref.toUpperCase();
 		char[]dna= {'A','G','C','T'};
 				/*try {	
 			  PrintWriter pw;
@@ -70,10 +70,10 @@ public class trivial {
 				Scanner sc=new Scanner(System.in);
 				int k=sc.nextInt();
 				int n=sc.nextInt();
-				double y=sc.nextDouble();
-			//	double x=sc.nextDouble();
+				int y=sc.nextInt();
+				double x=sc.nextDouble();
 				
-			//String []shortread=makeShortread(strref, k, n,10,dna);
+			//String []shortread=makeShortread(strref, k, n,x,dna);
 			//System.out.println(strref);
 			/*try {	
 				  PrintWriter pw;
@@ -115,13 +115,7 @@ public class trivial {
 			StringBuilder mydna=makeMyDna(strref,k,n,y,dna,shortread);
 		//	System.out.println(ref);
 		//	System.out.println(mydna);
-			long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-			long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
-
-			System.out.println(msecDiffTime/1000+"초의 시간이 걸렸습니다.");
-	
 			double count=0;
-			beforeTime=System.currentTimeMillis();
 			for(int i=0;i<ref.length();i++) {
 				if(ref.charAt(i)!=mydna.charAt(i)){
 					count++;
@@ -141,15 +135,13 @@ public class trivial {
 							e.printStackTrace();
 						}
 
-				 afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+				long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
 				double ra=(count/500000)*100;
 				System.out.println("오차율 : "+ra+"입니다");
-				 msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
+				long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
 
-				System.out.println(msecDiffTime/1000+"초의 시간이 걸렸습니다.");
 		
 				sc.close();
-				
 	}
 	/*static StringBuilder makeMyDna(StringBuilder ref,int k,int n,int y,char[] dna,String[]shortread) {
 		int indexcount=0;
@@ -237,37 +229,43 @@ public class trivial {
 		
 	}*/
 	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,String[]shortread) {
-		//int indexcount=0;
+		int indexcount=0;
 		int count=0;
-	//	boolean countb=false;
+		boolean countb=false;
 		//int stindex=0;
 		int tmp;
-		//int rl=ref.length();
-		int rlt=ref.length()-k+1;
 		int [][]store=new int[(int)y][2];
 		for(int stindex=0;stindex<n;stindex++) {
-		//	if(stindex%500==0) {System.out.println(stindex);}
-		test:for(int v=0;v<=rlt;v++) {
+			if(stindex%500==0) {System.out.println(stindex);}
+		for(int v=0;v<=ref.length()-k+1;v++) {
 			
 			tmp=v;
-			//countb=true;
+			countb=true;
 			count=0;
 			for(int stl=0;stl<k;stl++,tmp++) {
 				if(shortread[stindex].charAt(stl)!=ref.charAt(tmp)) {
+
 					count++;
 					if(count>y) {
-						continue test;
+						
+						countb=false;
+						break;
 					}
 					store[count-1][0]=stl;
 					store[count-1][1]=tmp;
+					
 				}
 			}
-
+			if(countb) {
 				for(int i=0;i<count;i++)
 				{//System.out.println(store[i][1]+","+store[i][0]);
 					ref.setCharAt(store[i][1], shortread[stindex].charAt(store[i][0]));}
 				break;
+				
 			}
+		}
+		
+		
 		}
 	
 		return ref;
@@ -304,14 +302,19 @@ public class trivial {
 		
 		int l=rl-k;
 		String [] shortread=new String[n];
-		int randomtmp;		
+		StringBuilder strtmp;	
+		int randomtmp;
+		int yindex;
+		int tmp = 0;
+		
 		for(int i=0;i<n;i++){
 			randomtmp=(int)(Math.random()*l);
 			//System.out.println(randomtmp);
 			shortread[i]=ref.substring(randomtmp, randomtmp+k);
 			
 		}
-
+		
+		//System.out.println(ref);
 		
 return shortread;		
 		

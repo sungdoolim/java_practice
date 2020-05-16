@@ -246,7 +246,7 @@ public class trivial {
 		int rlt=ref.length()-k+1;
 		int [][]store=new int[(int)y][2];
 		for(int stindex=0;stindex<n;stindex++) {
-		//	if(stindex%500==0) {System.out.println(stindex);}
+			if(stindex%500==0) {System.out.println(stindex);}
 		test:for(int v=0;v<=rlt;v++) {
 			
 			tmp=v;
@@ -254,12 +254,14 @@ public class trivial {
 			count=0;
 			for(int stl=0;stl<k;stl++,tmp++) {
 				if(shortread[stindex].charAt(stl)!=ref.charAt(tmp)) {
+
 					count++;
 					if(count>y) {
 						continue test;
 					}
 					store[count-1][0]=stl;
 					store[count-1][1]=tmp;
+					
 				}
 			}
 
@@ -267,7 +269,7 @@ public class trivial {
 				{//System.out.println(store[i][1]+","+store[i][0]);
 					ref.setCharAt(store[i][1], shortread[stindex].charAt(store[i][0]));}
 				break;
-			}
+		}
 		}
 	
 		return ref;
@@ -304,14 +306,19 @@ public class trivial {
 		
 		int l=rl-k;
 		String [] shortread=new String[n];
-		int randomtmp;		
+		StringBuilder strtmp;	
+		int randomtmp;
+		int yindex;
+		int tmp = 0;
+		
 		for(int i=0;i<n;i++){
 			randomtmp=(int)(Math.random()*l);
 			//System.out.println(randomtmp);
 			shortread[i]=ref.substring(randomtmp, randomtmp+k);
 			
 		}
-
+		
+		//System.out.println(ref);
 		
 return shortread;		
 		
