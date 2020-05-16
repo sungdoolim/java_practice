@@ -10,13 +10,12 @@ public class test1 {
 		String ref ="agctaagtccgtagctttgccgacgtcagcaaacgttcagggctcttgacaaccttgtctagcgatagcctagc";
 		ref=ref.toUpperCase();
 		StringBuilder strref=new StringBuilder(ref);
-		String str=null;
+	
 		try {
 		      
 			  BufferedReader br;
-			
+			String str;
 			br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/mydna2.txt"));
-			str=br.readLine();
 		br.close();
 
 		} catch ( IOException e) {
@@ -25,7 +24,7 @@ public class test1 {
 		}
 		double count=0;
 		for(int i=0;i<ref.length();i++) {
-			if(ref.charAt(i)!=str.charAt(i)){
+			if(ref.charAt(i)!=strref.charAt(i)){
 				count++;
 			}
 		}System.out.println(count+"개의 불일치");

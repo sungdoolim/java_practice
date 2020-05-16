@@ -68,7 +68,7 @@ public class trivial {
 		StringBuilder strref=new StringBuilder(ref);
 
 		StringBuilder strref2=new StringBuilder(ref);
-			//	System.out.println(strref.length());
+				System.out.println(strref.length());
 				Scanner sc=new Scanner(System.in);
 				int k=sc.nextInt();
 				int n=sc.nextInt();
@@ -209,7 +209,7 @@ public class trivial {
 		int rlt=ref.length()-k+1;
 		int [][]store=new int[(int)y][2];
 		for(int stindex=0;stindex<n;stindex++) {
-			if(stindex%2000==0) {System.out.println(stindex);}
+			if(stindex%500==0) {System.out.println(stindex);}
 		test:for(int v=0;v<=rlt;v++) {
 			
 			tmp=v;

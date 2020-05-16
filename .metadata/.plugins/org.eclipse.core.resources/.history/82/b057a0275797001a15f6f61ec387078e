@@ -152,7 +152,7 @@ public class trivial2 {
 	
 		int rl=ref.length();
 		
-		int ratio=(int)(rl*(y/100));System.out.println(ratio);
+		int ratio=(int)(rl*(y/100));
 		int tmp2;
 		
 		
@@ -179,23 +179,19 @@ public class trivial2 {
 		
 		int l=rl-k;
 		String [] shortread=new String[n];
-		int randomtmp;		
+
+		int randomtmp;
+	
+		
 		for(int i=0;i<n;i++){
 			randomtmp=(int)(Math.random()*l);
 			//System.out.println(randomtmp);
 			shortread[i]=ref.substring(randomtmp, randomtmp+k);
 			
 		}
-
-		try {	
-			  PrintWriter pw;
-					pw = new PrintWriter("C:/Users/bohee/Desktop/mydna2.txt");
-					
-					pw.print(ref);
-				        pw.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
+		
+		//System.out.println(ref);
+		
 return shortread;		
 		
 	}

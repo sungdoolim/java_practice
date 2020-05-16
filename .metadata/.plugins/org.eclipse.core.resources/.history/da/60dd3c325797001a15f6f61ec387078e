@@ -152,7 +152,7 @@ public class trivial2 {
 	
 		int rl=ref.length();
 		
-		int ratio=(int)(rl*(y/100));System.out.println(ratio);
+		int ratio=(int)(rl*(y/100));
 		int tmp2;
 		
 		

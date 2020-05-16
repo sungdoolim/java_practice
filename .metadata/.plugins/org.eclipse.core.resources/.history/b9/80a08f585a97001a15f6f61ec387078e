@@ -68,7 +68,7 @@ public class trivial {
 		StringBuilder strref=new StringBuilder(ref);
 
 		StringBuilder strref2=new StringBuilder(ref);
-			//	System.out.println(strref.length());
+				System.out.println(strref.length());
 				Scanner sc=new Scanner(System.in);
 				int k=sc.nextInt();
 				int n=sc.nextInt();
