@@ -177,9 +177,9 @@ public class trivial {
 					if(str.charAt(i)!=ref.charAt(i)){
 						count++;
 					}
-				}System.out.println("ref / my "+count+"개의 불일치");
+				}System.out.println("복구한 dna는 mydna와 "+count+"개의 불일치");
 				 ra=(count/500000)*100;
-				System.out.println("ref/ my  오차율 : "+ra+"입니다");
+				System.out.println("mydna와의 오차율 : "+ra+"입니다");
 		
 				
 				

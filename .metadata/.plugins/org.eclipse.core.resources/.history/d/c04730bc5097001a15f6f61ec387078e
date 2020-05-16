@@ -133,7 +133,7 @@ public class trivial {
 				//System.out.println(ref);
 				//System.out.println(mydna);
 				try {	
-					  PrintWriter pw;
+					   pw;
 							pw = new PrintWriter("C:/Users/bohee/Desktop/output.txt");
 				            pw.print(mydna);
 						    pw.close();
@@ -171,18 +171,6 @@ public class trivial {
 				System.out.println("mydna와의 오차율 : "+ra+"입니다");
 		
 				sc.close();
-				
-				
-				for(int i=0;i<ref.length();i++) {
-					if(str.charAt(i)!=ref.charAt(i)){
-						count++;
-					}
-				}System.out.println("ref / my "+count+"개의 불일치");
-				 ra=(count/500000)*100;
-				System.out.println("ref/ my  오차율 : "+ra+"입니다");
-		
-				
-				
 				
 	}
 	/*static StringBuilder makeMyDna(StringBuilder ref,int k,int n,int y,char[] dna,String[]shortread) {
@@ -280,7 +268,7 @@ public class trivial {
 		int rlt=ref.length()-k+1;
 		int [][]store=new int[(int)y][2];
 		for(int stindex=0;stindex<n;stindex++) {
-			if(stindex%500==0) {System.out.println(stindex);}
+		//	if(stindex%500==0) {System.out.println(stindex);}
 		test:for(int v=0;v<=rlt;v++) {
 			
 			tmp=v;
