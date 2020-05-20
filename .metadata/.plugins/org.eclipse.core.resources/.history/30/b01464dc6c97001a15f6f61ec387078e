@@ -23,31 +23,64 @@ public class trivial {
 		
 		writefile(dna);// 50만길이의 dna를 파일에 씁니다
 
-		ref=inputfile();// 위에서 쓴 파일을 불러옵니다
+				  BufferedReader br;
+				try {
+					br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/input.txt"));
+						 ref=br.readLine();				            			         		 	        
+				         br.close();
+				} catch ( IOException e) {
+					e.printStackTrace();
+				}		
+				// 위에서 쓴 파일을 불러옵니다
+				
 		StringBuilder strref=new StringBuilder(ref);
 		StringBuilder strref2=new StringBuilder(ref);// strref는 데이터가 변경되기에 strref2를 따로 만들었습니다.
-		String []shortread=makeShortread(strref, k, n,10,dna);
-		writeShortread(shortread);// shortread를 파일에 씁니다
-		shortread=fileshort(n);// 위에서 쓴 파일을 불러옵니다
-		String str = filemydna();//makeShortread메서드에서 파일로 저장한 파일을 불러옵니다.
 
-		double count=0;
-		for(int i=0;i<ref.length();i++) {
-			if(str.charAt(i)!=ref.charAt(i)){
-					count++;}
+			String []shortread=makeShortread(strref, k, n,10,dna);
+			writeShortread(shortread);// shortread를 파일에 씁니다
+		 
+				try {
+					String str;
+					br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/shortread.txt"));
+					int i=0;
+					while(true) {
+						 str=br.readLine();	
+						 if(str==null)
+						 { break;}
+				shortread[i]=str;i++;
+					}br.close();
+				} catch ( IOException e) {
+					e.printStackTrace();
 				}
-			double ra=(count/500000)*100;
-			System.out.println("reference mydna는 "+count+"개의 불일치를 가집니다");
-			 ra=(count/500000)*100;
-			System.out.println("오차율 : "+ra+"% 입니다");	// 여기는 x%로 잘 만들어 졌는지를 확인합니다.
+				// 위에서 쓴 파일을 불러옵니다
+				
+				String str = null;
+				try {
+					br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/mydna.txt"));
+						 str=br.readLine();	
+			br.close();
+				} catch ( IOException e) {
+					e.printStackTrace();
+				}
+				//makeShortread메서드에서 파일로 저장한 파일을 불러옵니다.
+				
+				double count=0;
+				for(int i=0;i<ref.length();i++) {
+					if(str.charAt(i)!=ref.charAt(i)){
+						count++;
+					}
+				}
 
-			long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기					
+				double ra=(count/500000)*100;
+				System.out.println("reference mydna는 "+count+"개의 불일치를 가집니다");
+				 ra=(count/500000)*100;
+				System.out.println("오차율 : "+ra+"% 입니다");
+				// 여기는 x%로 잘 만들어 졌는지를 확인합니다.
+				
+				long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기					
 			StringBuilder mydna=makeMyDna(strref2,k,n,y,dna,shortread);
 			long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
 			long msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
-			
-			// 이 밑은 결과를 출력하고 output파일을 만들 뿐입니다.
-			
 			System.out.println("\n"+msecDiffTime/1000+"초의 시간이 걸렸습니다.");
 			count=0;
 			for(int i=0;i<ref.length();i++) {
@@ -55,9 +88,20 @@ public class trivial {
 					count++;
 				}
 			}System.out.println(" 복구한 mydna는 ref와 "+count+"개의 불일치를 가집니다");
-				fileoutput(mydna);
+				try {	
+					  PrintWriter pw;
+							pw = new PrintWriter("C:/Users/bohee/Desktop/output.txt");
+				            pw.print(mydna);
+						    pw.close();
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}//결과를 파일로 저장합니다.
+
+				 afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
 				ra=(count/500000)*100;
 				System.out.println(" 오차율 : "+ra+"% 입니다");
+				 msecDiffTime = (afterTime - beforeTime); //두 시간에 차 계산
+				System.out.println(msecDiffTime/1000+"초의 시간이 걸렸습니다.");
 				 count=0;
 				beforeTime=System.currentTimeMillis();
 				for(int i=0;i<ref.length();i++) {
@@ -70,65 +114,6 @@ public class trivial {
 				sc.close();	
 	}
 	
-	
-	// 맨 밑에부터 두개의 메서드를 제외하면 전부 file 입출력 메서드로 큰 의미를 가지지 않습니다.
-	// 맨 밑 두개는 makeShortread 메서드와 makeMyDna 메서드를 말합니다
-	
-	
-	
-	static void fileoutput(StringBuilder mydna) {
-		try {	
-			  PrintWriter pw;
-					pw = new PrintWriter("C:/Users/bohee/Desktop/output.txt");
-		            pw.print(mydna);
-				    pw.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}//결과를 파일로 저장합니다.
-	}
-	
-	static String filemydna() {
-		 BufferedReader br;
-		 String str="";
-		try {
-			br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/mydna.txt"));
-				 str=br.readLine();	
-	br.close();
-		} catch ( IOException e) {
-			e.printStackTrace();
-		}
-		return str;
-	}
-	static String[] fileshort(int n) {
-		 BufferedReader br;
-		String []shortread=new String[n];
-		try {
-			String str;
-			br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/shortread.txt"));
-			int i=0;
-			while(true) {
-				 str=br.readLine();	
-				 if(str==null)
-				 { break;}
-		shortread[i]=str;i++;
-			}br.close();
-		} catch ( IOException e) {
-			e.printStackTrace();
-		}
-		return shortread;
-	}
-	static String inputfile() {
-		 BufferedReader br;
-		 String ref="";
-			try {
-				br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/input.txt"));
-					 ref=br.readLine();				            			         		 	        
-			         br.close();
-			} catch ( IOException e) {
-				e.printStackTrace();
-			}	
-			return ref;
-	}
 	static void writeShortread(String[]shortread) {
 		try {	
 			  PrintWriter pw;
@@ -176,12 +161,6 @@ public class trivial {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
 	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,String[]shortread) {
 		//int indexcount=0;
 		int count=0;

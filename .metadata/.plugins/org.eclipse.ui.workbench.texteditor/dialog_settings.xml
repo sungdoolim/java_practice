@@ -2,15 +2,21 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="k" key="selection"/>
+		<item value="mydna.txt" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="mydna.txt"/>
+			<item value="mydna"/>
+			<item value="myda"/>
+			<item value="print"/>
+			<item value="br"/>
+			<item value="System"/>
+			<item value="System."/>
 			<item value="k"/>
 			<item value="color"/>
-			<item value="print"/>
 			<item value="println"/>
 			<item value="tmp"/>
 			<item value="no2"/>

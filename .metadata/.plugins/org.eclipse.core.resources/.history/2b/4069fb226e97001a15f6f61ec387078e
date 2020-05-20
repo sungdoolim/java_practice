@@ -72,9 +72,6 @@ public class trivial {
 	
 	
 	// 맨 밑에부터 두개의 메서드를 제외하면 전부 file 입출력 메서드로 큰 의미를 가지지 않습니다.
-	// 맨 밑 두개는 makeShortread 메서드와 makeMyDna 메서드를 말합니다
-	
-	
 	
 	static void fileoutput(StringBuilder mydna) {
 		try {	
