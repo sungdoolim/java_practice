@@ -1,4 +1,5 @@
 package week10;
+//2015112120 임성두
 
 import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ public class hamilton {
 		ArrayList<String> s2=new ArrayList();
 		ArrayList<String> s3=new ArrayList();
 		ArrayList<String> s4=new ArrayList();
+		ArrayList<String> s5=new ArrayList();
 		s1.add("AGT");s1.add("AAA");s1.add("ACT");s1.add("AAC");s1.add("CTT");s1.add("GTA");s1.add("TTT");s1.add("TAA");
 		
 		s2.add("ATG");s2.add("AGG");s2.add("TGC");s2.add("TCC");s2.add("GTC");s2.add("GGT");s2.add("GCA");s2.add("CAG");
@@ -24,6 +26,10 @@ public class hamilton {
 		s4.add("GCTG");s4.add("CTGT");s4.add("GTAT");s4.add("TATG");s4.add("ATGG");
 		s4.add("TGGT");s4.add("GGTG");s4.add("TGTA");
 		
+		s5.add("AAAA");s5.add("BBBB");s5.add("BBBC");s5.add("BBCA");
+		s5.add("AAAB");s5.add("ABBB");s5.add("BCAA");
+		s5.add("AABB");
+		s5.add("CAAA");s5.add("AAAC");s5.add("AACA");s5.add("ACAA");s5.add("CAAA");
 		//AGTAAACTTT
 		//String []s2={"ATG", "AGG", "TGC", "TCC", "GTC", "GGT", "GCA", "CAG"};
 		//ATGCAGGTCC
@@ -35,13 +41,19 @@ public class hamilton {
 		
 	
 		//System.out.println(s1.get(0));
-	//	Spectrum(s1,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s1,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		System.out.println();
 		result.clear();
-	//	Spectrum(s2,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s2,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		System.out.println();
 		result.clear();
-	//	Spectrum(s3,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s3,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		System.out.println();
 		result.clear();
 		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		System.out.println();
+		result.clear();
+		Spectrum(s5,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
 		
 	//	System.out.println(s1.get(0));
 	//	Spectrum(s2,l2);
@@ -52,42 +64,40 @@ public class hamilton {
 	}
 	static void Spectrum(ArrayList s,int l) {
 		int len=s.size();
-		int f=firstString(s,l,len);System.out.println(f);
+		int f=firstString(s,l,len);
+		//System.out.println(f);
 		String t=null;
 		if(f>-1) {
 		t=s.get(f).toString();
 		s.remove(f);
 		len=s.size();
 		String rs=next(s,l,len,t,new ArrayList<String>());
-		System.out.println("result : "+rs);
 
-		
-		
 
-		
-	
-		}else {
+		}else {ArrayList<String> scl;
 			for(int i=0;i<s.size();i++) {
+				scl=(ArrayList<String>) s.clone();
 				f=i;
-				t=s.get(f).toString();
-				s.remove(f);
-				len=s.size();
-				String rs=next(s,l,len,t,new ArrayList<String>());
-				System.out.println("result : "+rs);
+				t=scl.get(f).toString();
+				scl.remove(f);
+				len=scl.size();
+				String rs=next(scl,l,len,t,new ArrayList<String>());
+				//System.out.println("result : "+rs);
 			}
 		}
 	}
 	static String next(ArrayList s,int l,int len,String t,ArrayList sltmp) {
 		if(s.isEmpty()) {
-			System.out.println("return 값: "+t);
-			result.add(t);
+			//System.out.println("return 값: "+t);
+			if(!result.contains(t))
+			{result.add(t);}
 			return t;
 		}
 		
 		String[]tmp=new String[5];int tl;int k;
 		sltmp=(ArrayList<String>) s.clone();
 		int ll=len;
-		System.out.println("지금 들어온 t :"+t);
+		//System.out.println("지금 들어온 t :"+t);
 		
 		 tl=t.length();//tl-l+1;
 		k=0;
@@ -99,12 +109,12 @@ public class hamilton {
 			for(int j=0;j<len;j++) {
 				stmp=s.get(j).toString();
 				st=stmp.substring(0, l-1);
-				System.out.println(st);
+			//	System.out.println(st);
 				if(t.substring(tl-l+1).equals(st)) {
 					sltmp.remove(j);
 					ll=sltmp.size();
 					tmp[k]=t+stmp.substring(l-1);
-					System.out.println(tmp[k]);
+					//System.out.println(tmp[k]);
 					r=next(sltmp,l,ll,tmp[k],new ArrayList<String>());
 					k++;
 					sltmp=(ArrayList<String>) s.clone();
@@ -112,7 +122,7 @@ public class hamilton {
 				
 			}
 			for(int i=0;i<tmp.length;i++) {
-				System.out.println(tmp[i]);
+			//	System.out.println(tmp[i]);
 			}
 			
 		return "X";
