@@ -41,19 +41,19 @@ public class hamilton {
 		
 	
 		//System.out.println(s1.get(0));
-		Spectrum(s1,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s1,3);	for(int i=0;i<result.size();i++) {System.out.println(i+1+"번째 경우 : "+result.get(i));}
 		System.out.println();
 		result.clear();
-		Spectrum(s2,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s2,3);	for(int i=0;i<result.size();i++) {System.out.println(i+1+"번째 경우 : "+result.get(i));}
 		System.out.println();
 		result.clear();
-		Spectrum(s3,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s3,3);	for(int i=0;i<result.size();i++) {System.out.println(i+1+"번째 경우 : "+result.get(i));}
 		System.out.println();
 		result.clear();
-		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+1+"번째 경우 : "+result.get(i));}
 		System.out.println();
 		result.clear();
-		Spectrum(s5,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s5,4);	for(int i=0;i<result.size();i++) {System.out.println(i+1+"번째 경우 : "+result.get(i));}
 		
 	//	System.out.println(s1.get(0));
 	//	Spectrum(s2,l2);
