@@ -1,0 +1,81 @@
+package week10;
+
+public class hamilton {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String []s1= {"AGT","AAA","ACT","AAC","CTT","GTA","TTT","TAA"};
+		//AGTAAACTTT
+		String []s2={"ATG", "AGG", "TGC", "TCC", "GTC", "GGT", "GCA", "CAG"};
+		//ATGCAGGTCC
+		String []s3={"ATG", "TGG", "TGC", "GTG", "GGC", "GCA", "GCG", "CGT"};
+		//ATGCGTGGCA   ATGGCGTGCA
+		String []s4={"ATGC", "TGCG", "GCGG", "CGGC","GGCT", "GCTG", "CTGT", "TGTA", "GTAT", "TATG", "ATGG", "TGGT", "GGTG"};
+		//ATGCGGCTGTATGGTG
+		
+	
+		
+		Spectrum(s1,3);
+	//	Spectrum(s2,l2);
+	//	Spectrum(s4,l3);
+	//	Spectrum(s4,l4);
+		
+		
+	}
+	static String Spectrum(String []s,int l) {
+		int len=s.length;
+		int f=firstString(s,l,len);System.out.println(f);
+		
+		String t=s[f];
+		next(s,l,len,t);
+		
+		
+		
+
+		
+		return "";
+	}
+	static void next(String []s,int l,int len,String t) {
+		String t1="";
+		int tl=t.length();
+		int k=0;
+		String[]tmp=new String[100];
+		String tt="";
+		
+			for(int j=0;j<l;j++) {
+				tt=t.substring(tl-l+1);
+				System.out.println(tt);
+				t1=s[j].substring(0,l-1);
+				if(t.equals(t1)) {
+					tmp[k]=t+t1.charAt(l-1);
+				}
+			}
+			
+		
+	}
+	static int firstString(String []s,int l,int len) {
+		String t="";
+		String t1="";
+		int k;
+		test:for(int i=0;i<len;i++) {
+			k=i;
+			t=s[i].substring(0,l-1);
+			for(int j=0;j<len;j++) {
+			//	System.out.println(i+","+j);
+				
+				if(i==j)continue;
+				
+				t1=s[j].substring(1);
+			//	System.out.println(t+","+t1);
+				if(t.equals(t1)) {
+					continue test;
+				}
+			}
+			return k;
+		}
+		return -1;
+		
+	}
+
+}

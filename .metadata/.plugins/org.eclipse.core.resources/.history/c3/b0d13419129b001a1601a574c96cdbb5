@@ -1,0 +1,71 @@
+package week10;
+
+public class hamilton {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String []s1= {"AGT","AAA","ACT","AAC","CTT","GTA","TTT","TAA"};
+		//AGTAAACTTT
+		String []s2={"ATG", "AGG", "TGC", "TCC", "GTC", "GGT", "GCA", "CAG"};
+		//ATGCAGGTCC
+		String []s3={"ATG", "TGG", "TGC", "GTG", "GGC", "GCA", "GCG", "CGT"};
+		//ATGCGTGGCA   ATGGCGTGCA
+		String []s4={"ATGC", "TGCG", "GCGG", "CGGC","GGCT", "GCTG", "CTGT", "TGTA", "GTAT", "TATG", "ATGG", "TGGT", "GGTG"};
+		//ATGCGGCTGTATGGTG
+		
+		int l1=s1.length;
+		int l2=s2.length;
+		int l3=s3.length;
+		int l4=s4.length;
+		
+		Spectrum(s1,l1);
+	//	Spectrum(s2,l2);
+	//	Spectrum(s4,l3);
+	//	Spectrum(s4,l4);
+		
+		
+	}
+	static String Spectrum(String []s,int l) {
+		int f=firstString(s,l);System.out.println(f);
+		String t="";
+		String t1="";
+		int k=0;
+		String[]tmp=new String[100];
+		for(int i=0;i<l;i++) {
+			k=0;
+			for(int j=0;j<l;j++) {
+				if(i==j)continue;
+				
+				t=s[i].substring(1);
+				t1=s[j].substring(0,l-1);
+				if(t.equals(t1)) {
+					tmp[k]=t+t1.charAt(l-1);
+				}
+			}
+			
+		}
+		
+		return "";
+	}
+	static int firstString(String []s,int l) {
+		String t="";
+		String t1="";
+		
+		for(int i=0;i<l;i++) {
+			t=s[i].substring(0,l-1);
+			for(int j=0;j<l;j++) {
+				if(i==j)continue;
+				
+				t1=s[j].substring(1);
+				if(t.equals(t1)) {
+					
+				}
+			}
+			return i;
+		}
+		return -1;
+		
+	}
+
+}
