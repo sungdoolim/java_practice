@@ -35,10 +35,10 @@ public class hamilton {
 		String t=s.get(f).toString();
 		s.remove(f);
 		len=s.size();
-		
+		String tmp[];
 
-		String rs=next(s,l,len,t,new ArrayList<String>());
-		System.out.println(rs);
+		tmp=next(s,l,len,t,new ArrayList<String>());
+		
 		
 		
 
@@ -69,10 +69,8 @@ public class hamilton {
 				if(t.substring(tl-l+1).equals(st)) {
 					sltmp.remove(j);
 					ll=sltmp.size();
-					tmp[k]=t+stmp.substring(l-1);
-					System.out.println(tmp[k]);
+					tmp[k]=t+stmp.substring(l-1);k++;
 					next(sltmp,l,ll,tmp[k],new ArrayList<String>());
-					k++;
 					sltmp=(ArrayList<String>) s.clone();
 				}
 				

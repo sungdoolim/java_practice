@@ -70,9 +70,8 @@ public class hamilton {
 					sltmp.remove(j);
 					ll=sltmp.size();
 					tmp[k]=t+stmp.substring(l-1);
-					System.out.println(tmp[k]);
+					System.out.println(tmp[k]);k++;
 					next(sltmp,l,ll,tmp[k],new ArrayList<String>());
-					k++;
 					sltmp=(ArrayList<String>) s.clone();
 				}
 				
