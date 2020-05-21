@@ -50,7 +50,7 @@ public class hamilton {
 		
 	
 	}
-	static void Spectrum(ArrayList s,int l) {
+	static String Spectrum(ArrayList s,int l) {
 		int len=s.size();
 		int f=firstString(s,l,len);System.out.println(f);
 		String t=null;
@@ -74,8 +74,13 @@ public class hamilton {
 				len=s.size();
 				String rs=next(s,l,len,t,new ArrayList<String>());
 				System.out.println("result : "+rs);
+			
+				
+
 			}
 		}
+
+		return "";
 	}
 	static String next(ArrayList s,int l,int len,String t,ArrayList sltmp) {
 		if(s.isEmpty()) {
@@ -128,7 +133,7 @@ public class hamilton {
 			for(int j=0;j<len;j++) {
 			//	System.out.println(i+","+j);
 				
-				if(i==j) {continue;}
+				if(i==j)continue;
 				
 				t1=s.get(j).toString().substring(1);
 			//	System.out.println(t+","+t1);

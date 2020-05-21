@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class hamilton {
 
 	static ArrayList<String>result=new ArrayList();
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -19,10 +18,9 @@ public class hamilton {
 		
 		s3.add("ATG");s3.add("TGG");s3.add("TGC");s3.add("GTG");s3.add("GGC");s3.add("GCA");s3.add("GCG");s3.add("CGT");
 	
-		//s4.add("kATG");
 		s4.add("ATGC");s4.add("TGCG");s4.add("GCGG");s4.add("CGGC");s4.add("GGCT");
 		s4.add("GCTG");s4.add("CTGT");s4.add("GTAT");s4.add("TATG");s4.add("ATGG");
-		s4.add("TGGT");s4.add("GGTG");s4.add("TGTA");
+		s4.add("TGGT");s4.add("GGTG");
 		
 		//AGTAAACTTT
 		//String []s2={"ATG", "AGG", "TGC", "TCC", "GTC", "GGT", "GCA", "CAG"};
@@ -35,47 +33,30 @@ public class hamilton {
 		
 	
 		//System.out.println(s1.get(0));
-	//	Spectrum(s1,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
-		result.clear();
-	//	Spectrum(s2,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
-		result.clear();
-	//	Spectrum(s3,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
-		result.clear();
-		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
-		
+		Spectrum(s2,3);
 	//	System.out.println(s1.get(0));
 	//	Spectrum(s2,l2);
 	//	Spectrum(s4,l3);
 	//	Spectrum(s4,l4);
 		
-	
+		
 	}
-	static void Spectrum(ArrayList s,int l) {
+	static String Spectrum(ArrayList s,int l) {
 		int len=s.size();
 		int f=firstString(s,l,len);System.out.println(f);
-		String t=null;
-		if(f>-1) {
-		t=s.get(f).toString();
+		String t=s.get(f).toString();
 		s.remove(f);
 		len=s.size();
+		
+
 		String rs=next(s,l,len,t,new ArrayList<String>());
 		System.out.println("result : "+rs);
-
+		System.out.println(result.get(0));
 		
 		
 
 		
-	
-		}else {
-			for(int i=0;i<s.size();i++) {
-				f=i;
-				t=s.get(f).toString();
-				s.remove(f);
-				len=s.size();
-				String rs=next(s,l,len,t,new ArrayList<String>());
-				System.out.println("result : "+rs);
-			}
-		}
+		return "";
 	}
 	static String next(ArrayList s,int l,int len,String t,ArrayList sltmp) {
 		if(s.isEmpty()) {
@@ -128,7 +109,7 @@ public class hamilton {
 			for(int j=0;j<len;j++) {
 			//	System.out.println(i+","+j);
 				
-				if(i==j) {continue;}
+				if(i==j)continue;
 				
 				t1=s.get(j).toString().substring(1);
 			//	System.out.println(t+","+t1);

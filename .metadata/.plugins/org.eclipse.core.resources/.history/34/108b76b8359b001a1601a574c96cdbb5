@@ -35,11 +35,11 @@ public class hamilton {
 		
 	
 		//System.out.println(s1.get(0));
-	//	Spectrum(s1,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
 		result.clear();
-	//	Spectrum(s2,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
 		result.clear();
-	//	Spectrum(s3,3);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
+		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
 		result.clear();
 		Spectrum(s4,4);	for(int i=0;i<result.size();i++) {System.out.println(i+","+result.get(i));}
 		
@@ -50,32 +50,23 @@ public class hamilton {
 		
 	
 	}
-	static void Spectrum(ArrayList s,int l) {
+	static String Spectrum(ArrayList s,int l) {
 		int len=s.size();
 		int f=firstString(s,l,len);System.out.println(f);
-		String t=null;
-		if(f>-1) {
-		t=s.get(f).toString();
+		String t=s.get(f).toString();
 		s.remove(f);
 		len=s.size();
+		
+
 		String rs=next(s,l,len,t,new ArrayList<String>());
 		System.out.println("result : "+rs);
-
+		for(int i=0;i<result.size();i++)
+		System.out.println(result.get(i));
 		
 		
 
 		
-	
-		}else {
-			for(int i=0;i<s.size();i++) {
-				f=i;
-				t=s.get(f).toString();
-				s.remove(f);
-				len=s.size();
-				String rs=next(s,l,len,t,new ArrayList<String>());
-				System.out.println("result : "+rs);
-			}
-		}
+		return "";
 	}
 	static String next(ArrayList s,int l,int len,String t,ArrayList sltmp) {
 		if(s.isEmpty()) {
@@ -128,7 +119,7 @@ public class hamilton {
 			for(int j=0;j<len;j++) {
 			//	System.out.println(i+","+j);
 				
-				if(i==j) {continue;}
+				if(i==j)continue;
 				
 				t1=s.get(j).toString().substring(1);
 			//	System.out.println(t+","+t1);

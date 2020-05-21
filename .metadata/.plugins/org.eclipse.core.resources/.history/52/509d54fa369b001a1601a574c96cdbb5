@@ -77,7 +77,7 @@ public class hamilton {
 			}
 		}
 	}
-	static String next(ArrayList s,int l,int len,String t,ArrayList sltmp) {
+	static void next(ArrayList s,int l,int len,String t,ArrayList sltmp) {
 		if(s.isEmpty()) {
 			System.out.println("return 값: "+t);
 			result.add(t);
@@ -115,7 +115,7 @@ public class hamilton {
 				System.out.println(tmp[i]);
 			}
 			
-		return "X";
+	
 		
 	}
 	static int firstString(ArrayList s,int l,int len) {
@@ -128,7 +128,7 @@ public class hamilton {
 			for(int j=0;j<len;j++) {
 			//	System.out.println(i+","+j);
 				
-				if(i==j) {continue;}
+				if(i==j)continue;
 				
 				t1=s.get(j).toString().substring(1);
 			//	System.out.println(t+","+t1);
