@@ -1,0 +1,19 @@
+package week11;
+
+public class bwt {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String T="missisippi";
+		T="$"+T;
+		System.out.println(T);
+		
+		
+		
+		
+		
+		
+	}
+
+}

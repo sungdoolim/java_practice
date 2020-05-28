@@ -1,0 +1,61 @@
+package week11;
+
+import java.util.Arrays;
+
+public class bwt {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//String T="missisippi";
+		String T="acaacg";
+		
+		String bwt=BWT(T);   /// bwt(t)를 받아 옵니다.
+		
+		System.out.println("\n BWT(T)의 결과 : "+ bwt);
+		
+		
+		
+		
+	}
+	static String BWT(String T) {
+		
+		T="$"+T;
+		System.out.println(T+"\n");
+		int tl=T.length();
+		String []FTRest=new String[tl];
+		String tmp1,tmp2;
+		
+		
+		for(int i=tl;i>0;i--) {// Fill the Rest를 만들어 냅니다.
+			tmp1=T.substring(0, i);
+			tmp2=T.substring(i);
+			FTRest[tl-i]=tmp2+tmp1;
+		}
+		
+		
+
+		System.out.println("Fill the Rest : ");
+		for(int i=0;i<FTRest.length;i++) {//Fill the Rest출력 결과 입니다.
+			System.out.println(FTRest[i]);
+		}
+		
+		
+		Arrays.sort(FTRest);
+		System.out.println();
+
+		System.out.println("Sorted Fill the Rest : ");
+		for(int i=0;i<FTRest.length;i++) {//Fill the Rest를 알파벳 순서로 sort한 결과 출력입니다.
+			System.out.println(FTRest[i]);
+		}
+		
+		String bwt="";
+		for(int i=0;i<tl;i++) {
+			bwt+=FTRest[i].charAt(tl-1);
+		}
+	
+		return bwt;
+	}
+		
+
+}

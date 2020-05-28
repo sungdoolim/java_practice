@@ -1,0 +1,27 @@
+package week11;
+
+public class bwt {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String T="missisippi";
+		T="$"+T;
+		System.out.println(T+"\n");
+		int tl=T.length();
+		String []FTRest=new String[tl];
+		String tmp1,tmp2;
+		for(int i=tl-1;i>=0;i--) {
+			tmp1=T.substring(0, i);
+			tmp2=T.substring(i);
+			System.out.println(tmp1+", "+tmp2);
+		}
+		
+		
+		
+		
+		
+		
+	}
+
+}
