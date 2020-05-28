@@ -12,58 +12,130 @@ public class bwt {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String T="missisippi";
+	//	String T="missisippi";
 		//String T="acaacg";
-		char[] bwt=BWT(T);   /// bwt(t)를 받아 옵니다.
+		String T="sungdoolim";
+		String[] bwt=BWT(T);   /// bwt(t)를 받아 옵니다.
 		int bwtl=bwt.length;
+		
 		System.out.println("\nBWT(T)의 결과 : ");
 		for(int i=0;i<bwtl;i++) {
 			System.out.print(bwt[i]);
 		}System.out.println();
+		
+		
 		String myText=FindMyText(bwt,bwtl);
 		
 		
 		
 	}
-	static String FindMyText(char[] bwt,int bwtl) {
+	static String FindMyText(String[] bwt,int bwtl) {
 
-		char[] bwt_origin=bwt.clone();
-		Arrays.sort(bwt);// 알파벳 순서 정렬 
-		// sort된 bwt는 처음 열 을 가지게 됩니다. 
-		Map<Character,Integer> har=new HashMap<>();
-		int count=0;
-			for(int i=0;i<bwtl-1;i++) {
-			if(bwt[i]==bwt[i+1]) {
-			count++;
-			continue;
-			}else {
-				har.put(bwt[i], count);
-				count=0;
-			}
-		}har.put(bwt[bwtl-1], count);
-		
-		
-
+		String[] bwt_origin=bwt.clone();
+		String[] bwt_original_tmp=bwt.clone();
 	
 		
-		String a="SDfdsf";
+		Arrays.sort(bwt);// 알파벳 순서 정렬 
+		String[] bwt_tmp=bwt.clone();
+		// sort된 bwt는 처음 열 을 가지게 됩니다. 
+	//	Map<String,Integer> har=new HashMap<>();
+		String []keys=new String[bwtl];
+		int c=0;
+		for(int i=0;i<bwtl-1;i++) {
+			if(bwt[i].equals(bwt[i+1])) {
+				continue;
+			}else {
+				keys[c]=bwt[i];c++;
+			}
+		}keys[c]=bwt[bwtl-1];
+		int count=0;
+//		int kl=0;
+//			for(int i=0;i<bwtl-1;i++) {
+//			if(bwt[i]==bwt[i+1]) {
+//			count++;
+//			continue;
+//			}else {
+//				keys[kl]=bwt[i];
+//				har.put(bwt[i], count);
+//				count=0;
+//				kl++;
+//			}
+//		}har.put(bwt[bwtl-1], count);
+		
+		int countmp=0;
+		for(int j=0;j<c+1;j++) {
+			count=0;
+			countmp=0;
+			for(int i=0;i<bwtl;i++) {
+				if(keys[j].equals(bwt_origin[i])) {
+					bwt_original_tmp[i]+=count;count++;
+				}
+				if(keys[j].equals(bwt[i])) {
+					bwt_tmp[i]+=countmp;countmp++;
+				}
+			}
+			
+			
+		}
+//		for(int i=0;i<bwtl;i++) {
+//			System.out.println(bwt_origin[i]);
+//		}
+//		for(int i=0;i<bwtl;i++) {
+//			System.out.println(bwt[i]);
+//		}
+//	
+		
+	//	String a="SDfdsf";
 //		ArrayList<Object> originbwt=new ArrayList<>();
 //		originbwt.add("2");
 //		originbwt.add('c');
 //		originbwt.add(3);
-	//	System.out.println(originbwt.get(2));
+//		System.out.println(originbwt.get(2));
 		//ArrayList sortedbwt=new ArrayList<>();
 
 		
 		//har.put(bwt[i], count);
 		
 		for(int i=0;i<bwtl;i++) {
-			System.out.println(bwt[i]+","+bwt_origin[i]);	
+			System.out.println(bwt_tmp[i]+","+bwt_original_tmp[i]);	
 		}		
+		String result="";
+		System.out.println("R="+result);
+		
+		int i=0;
+		String ortmp;
+		String btmp;
+		test:while(true) {
+			
+			System.out.println(result);
+			for(int j=0;j<bwtl;j++) {
+				ortmp=bwt_original_tmp[i];
+				btmp=bwt_tmp[j];
+				if(ortmp.equals(btmp)) {
+					if(btmp.equals("$0"))
+					{	break test;}
+					
+					result=bwt[j]+result;		
+					i=j;
+					
+				}else {
+					continue;
+				}
+			}
+		}		
+		
+		System.out.println("R="+result);
+		
+		
+		
+		
+		
+		
+		
 		return "";
 	}
 	
-	static char[] BWT(String T) {
+	static String[] BWT(String T) {
 		
 		T="$"+T;
 		System.out.println(T+"\n");
@@ -95,10 +167,10 @@ public class bwt {
 		}
 		
 		String bwt="";
-		char []bwt2=new char[tl];
+		String []bwt2=new String[tl];
 		for(int i=0;i<tl;i++) {
 			bwt+=FTRest[i].charAt(tl-1);
-			bwt2[i]=FTRest[i].charAt(tl-1);
+			bwt2[i]=FTRest[i].substring(tl-1);
 		}
 	
 		//return bwt;
