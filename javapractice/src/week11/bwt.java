@@ -1,4 +1,5 @@
 package week11;
+//2015112120 임성두
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +13,11 @@ public class bwt {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-	//	String T="missisippi";
+		//String T="missisippi";
 		//String T="acaacg";
-		String T="sungdoolim";
+		String T="SungDooLim";
+		//String T="1234";
+		//String T="abccbaabc";
 		String[] bwt=BWT(T);   /// bwt(t)를 받아 옵니다.
 		int bwtl=bwt.length;
 		
@@ -24,19 +27,25 @@ public class bwt {
 		}System.out.println();
 		
 		
-		String myText=FindMyText(bwt,bwtl);
+		String myText=FindMyText(bwt,bwtl);	
 		
 		
 		
 	}
+	
+	
+	
+	
 	static String FindMyText(String[] bwt,int bwtl) {
 
 		String[] bwt_origin=bwt.clone();
+		//현 bwt를 복사합니다.
 		String[] bwt_original_tmp=bwt.clone();
-	
-		
+		// 현 bwt를 하나더 복사합니다/.
 		Arrays.sort(bwt);// 알파벳 순서 정렬 
 		String[] bwt_tmp=bwt.clone();
+		// 알파벳 순서로 정렬된 bwt를 복사 합니다. 
+		
 		// sort된 bwt는 처음 열 을 가지게 됩니다. 
 	//	Map<String,Integer> har=new HashMap<>();
 		String []keys=new String[bwtl];
@@ -97,25 +106,26 @@ public class bwt {
 		//har.put(bwt[i], count);
 		
 		for(int i=0;i<bwtl;i++) {
-			System.out.println(bwt_tmp[i]+","+bwt_original_tmp[i]);	
+		//	System.out.println(bwt_tmp[i]+","+bwt_original_tmp[i]);	
 		}		
 		String result="";
-		System.out.println("R="+result);
+		//System.out.println("R="+result);
 		
 		int i=0;
 		String ortmp;
 		String btmp;
 		test:while(true) {
 			
-			System.out.println(result);
 			for(int j=0;j<bwtl;j++) {
+				
 				ortmp=bwt_original_tmp[i];
 				btmp=bwt_tmp[j];
 				if(ortmp.equals(btmp)) {
 					if(btmp.equals("$0"))
 					{	break test;}
 					
-					result=bwt[j]+result;		
+					result=bwt[j]+result;	
+					System.out.println(result);
 					i=j;
 					
 				}else {
@@ -130,8 +140,13 @@ public class bwt {
 		
 		
 		
-		
-		
+		for(int j=0;j<bwtl;j++) {
+			System.out.print(bwt_tmp[j]+" ");
+		}System.out.println();
+		for(int j=0;j<bwtl;j++) {
+			System.out.print(bwt_original_tmp[j]+" ");
+		}
+		System.out.println();
 		return "";
 	}
 	
@@ -142,34 +157,32 @@ public class bwt {
 		int tl=T.length();
 		String []FTRest=new String[tl];
 		String tmp1,tmp2;
-		
-		
-		for(int i=tl;i>0;i--) {// Fill the Rest를 만들어 냅니다.
+		for(int i=tl;i>0;i--) {
+			// Fill the Rest를 만들어 냅니다.
 			tmp1=T.substring(0, i);
 			tmp2=T.substring(i);
 			FTRest[tl-i]=tmp2+tmp1;
 		}
-		
-		
 
 		System.out.println("Fill the Rest : ");
-		for(int i=0;i<FTRest.length;i++) {//Fill the Rest출력 결과 입니다.
+		for(int i=0;i<FTRest.length;i++) {
+			//Fill the Rest출력 결과 입니다.
 			System.out.println(FTRest[i]);
 		}
-		
 		
 		Arrays.sort(FTRest);
 		System.out.println();
 
 		System.out.println("Sorted Fill the Rest : ");
-		for(int i=0;i<FTRest.length;i++) {//Fill the Rest를 알파벳 순서로 sort한 결과 출력입니다.
+		for(int i=0;i<FTRest.length;i++) {
+			//Fill the Rest를 알파벳 순서로 sort한 결과 출력입니다.
 			System.out.println(FTRest[i]);
 		}
 		
-		String bwt="";
+		//String bwt="";
 		String []bwt2=new String[tl];
 		for(int i=0;i<tl;i++) {
-			bwt+=FTRest[i].charAt(tl-1);
+			//bwt+=FTRest[i].charAt(tl-1);
 			bwt2[i]=FTRest[i].substring(tl-1);
 		}
 	
