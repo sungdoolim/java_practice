@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+public class ttest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[]tmp=new String[5];int tl;int k;
+		ArrayList<String>s=new ArrayList();
+		s.add("hi");
+		s.add("hello");
+		System.out.println(s.get(0));
+		s.remove(0);
+		System.out.println(s.get(0));
+	}
+
+}

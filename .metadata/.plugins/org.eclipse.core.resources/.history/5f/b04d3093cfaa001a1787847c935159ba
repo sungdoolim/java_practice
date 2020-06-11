@@ -1,0 +1,127 @@
+package algorithm_dnaprj;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class prj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc=new Scanner(System.in);
+		ArrayList shortread=fileshort(50000);//30 * 20000 // 30 30000
+	//	ArrayList shortread=new ArrayList<String>();//30 * 20000
+	//	shortread.add("abcdefg");
+	//	shortread.add("efg1234");
+		
+		int r=sc.nextInt(); // 몇개까지 일치하면 합칠까?
+		String result=brute(shortread,r);
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	static String brute(ArrayList<String>shortread,int r) {
+		String result="";
+		ArrayList<String> shorttmp;
+		int len=shortread.size();
+		System.out.println("length = "+len);
+		//System.out.println(shortread.size());
+		for(int i=0;i<len;i++) {
+		//	if(i%10==0) {
+				System.out.println(i+"번째");
+		//	}
+			shorttmp=(ArrayList<String>) shortread.clone();
+			len=shorttmp.size();
+		//	shorttmp.remove(i);
+			denov(shorttmp,shorttmp.get(i),i,r);
+		}
+		
+		
+		
+		return result;
+	}
+	static String denov(ArrayList<String> shorttmp,String res,int i, int r) {
+		int len_short=30;//short의 길이
+		//String start=shorttmp.get(i);
+		//shorttmp.remove(i);
+		String result=res;
+		String compare;
+		String subtmp;
+		String subtmp2;
+		int len=shorttmp.size();
+	//	System.out.println(len);
+		for(int j=0;j<shorttmp.size()-1;j++) {
+			
+			compare=shorttmp.get(j);
+			
+			subtmp=compare.substring(0,r);
+			subtmp2=compare.substring(r);
+			
+			if(result.contains(subtmp)) {
+				
+				//int rindex=result.indexOf(subtmp);
+				int rindex=result.lastIndexOf(subtmp);
+				int rl=result.length();
+				
+				int subrl=rl-rindex;
+				if(subrl==r) {
+					
+					result+=subtmp2;
+					shorttmp.remove(j);len--;
+					 denov(shorttmp,result,j,r);
+					
+					
+				}else if(subrl<len_short&&subrl>r) {
+					int d=subrl-r;
+					String subtmp3=subtmp2.substring(0,d);
+					if(result.substring(rl-d).equals(subtmp3)) {
+						result+=subtmp2.substring(d);
+						shorttmp.remove(j);len--;
+						 denov(shorttmp,result,j,r);
+					}
+
+				}
+				else {
+					continue;
+				}   
+				
+			
+				
+		}}
+		
+		if(result.length()>80000)
+		System.out.println(result.length());
+			
+		
+		return "";
+		
+	}
+	
+	
+	static ArrayList<String> fileshort(int n) {
+		ArrayList<String> strlist=new ArrayList<String>();
+		 BufferedReader br;
+		String []shortread=new String[n];
+		try {
+			String str;
+			br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/shortread.txt"));
+			int i=0;
+			while(true) {
+				 str=br.readLine();	
+				 if(str==null)
+				 { break;}
+		shortread[i]=str;
+		strlist.add(str);
+		i++;
+			}br.close();
+		} catch ( IOException e) {
+			e.printStackTrace();
+		}
+		//return shortread;
+		return strlist;
+	}
+	
+}

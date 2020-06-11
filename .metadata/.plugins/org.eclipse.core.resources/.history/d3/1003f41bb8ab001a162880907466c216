@@ -1,0 +1,49 @@
+package algorithm_dnaprj;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class compare_denov {
+
+	public static void main(String[] args) {
+		
+		 BufferedReader br;
+		 String ref="";
+			try {
+				br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/mydna.txt"));
+					 ref=br.readLine();				            			         		 	        
+			         br.close();
+			} catch ( IOException e) {
+				e.printStackTrace();
+			}	
+			
+			 BufferedReader br2;
+			 String ref2="";
+				try {
+					br2 = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/denov.txt"));
+						 ref2=br2.readLine();	
+						 
+				         br2.close();
+				} catch ( IOException e) {
+					e.printStackTrace();
+				}	
+				ref2=ref2.subSequence(0, 50000);
+				
+				System.out.println(ref.length());
+				System.out.println(ref2.length());
+				double count=0;
+				for(int i=0;i<ref2.length();i++) {
+					if(ref.charAt(i)!=ref2.charAt(i)){
+							count++;}
+						}
+					double ra=(count/50000)*100;//50000개만 해보까--------------------------------------------------
+					System.out.println("reference mydna는 "+count+"개의 불일치를 가집니다");
+					 ra=(count/50000)*100;
+					System.out.println("오차율 : "+ra+"% 입니다");	// 여기는 x%로 잘 만들어 졌는지를 확인합니다.
+
+		
+		
+	}
+}

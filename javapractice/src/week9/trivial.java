@@ -17,8 +17,8 @@ public class trivial {
 
 		char[]dna= {'A','G','C','T'};
 		Scanner sc=new Scanner(System.in);
-		int k=sc.nextInt();
-		int n=sc.nextInt();
+		int k=sc.nextInt();//30
+		int n=sc.nextInt();//20000
 		double y=sc.nextDouble();
 		
 		writefile(dna);// 50만길이의 dna를 파일에 씁니다
@@ -36,7 +36,7 @@ public class trivial {
 			if(str.charAt(i)!=ref.charAt(i)){
 					count++;}
 				}
-			double ra=(count/500000)*100;
+			double ra=(count/500000)*100;//50000개만 해보까--------------------------------------------------
 			System.out.println("reference mydna는 "+count+"개의 불일치를 가집니다");
 			 ra=(count/500000)*100;
 			System.out.println("오차율 : "+ra+"% 입니다");	// 여기는 x%로 잘 만들어 졌는지를 확인합니다.
@@ -139,17 +139,22 @@ public class trivial {
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
+		System.out.println("end writeShortread");
 	}
 	static void writefile(char[]dna) {
 		try {	
+			System.out.println("gg");
 	  PrintWriter pw;
 			pw = new PrintWriter("C:/Users/bohee/Desktop/input.txt");
 			
 			int a=5;
 			int c=0;
 			int count=0;
-			  for(int i=0; i<500000; i++) {
+			  for(int i=0; i<5000; i++) {//50000 만 해보자-------------------------------------------------------
 		         
+				  if(i%500==0) {
+					  System.out.println(i);
+				  }
 		    //두번의 중복은 허용 합니다
 		    //즉 같은 값이 3번 나올수 있습니다.
 		    //aagggt 처럼 g가 3번까지 반복이 가능하며
@@ -174,7 +179,8 @@ public class trivial {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
+		System.out.println("end write file");
 	}
 	
 	
@@ -263,10 +269,12 @@ public class trivial {
 					pw = new PrintWriter("C:/Users/bohee/Desktop/mydna.txt");
 					
 					pw.print(ref);
+					
 				        pw.close();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
+		System.out.println("mydna 쓰기 완료");
 return shortread;		
 		
 	}
