@@ -33,41 +33,66 @@ static int DENOVCOUNT=0;
 		int len=shortread.size();
 		System.out.println("length = "+len);
 		//System.out.println(shortread.size());
-		//for(int i=0;i<len;i++) {
-		//	if(i%10==0) {
-			//	System.out.println("번째");
-		//	}
+		for(int i=0;i<len;i++) {
+			
+				System.out.println(i+"번째");
+			
 			shorttmp=(ArrayList<String>) shortread.clone();
 		//	len=shorttmp.size();
-			String res=shorttmp.get(0);
-			shorttmp.remove(0);
-			System.out.println();
-			denov(shorttmp,res,0,r);
-	//	}
+			String res=shorttmp.get(i);
+			shorttmp.remove(i);
+			
+			denov(shorttmp,res,i,r);
+		}
 		
 		
 		
 		return result;
 	}
 	static String denov(ArrayList<String> shorttmp,String res,int i, int r) throws IOException {
-		int len_short=10;//short의 길이
+		int len_short=500;//short의 길이---------------------------------------
 		//String start=shorttmp.get(i);
 		//shorttmp.remove(i);
+		
+		//500/15/250/5
+		//5000/50/500/
+		// 100/250
+		//50/1000
+		//
+		//50000/300/300
+		//100/2500
+		//150/600
+		//300/1000
+		//200/2000/7
+		//500000/ 400/10000
+		//400/5000
+		//500/3000
+		//1000/1000
+		//300/3000
+		//500/20000/200
+		
+		
+		
 		DENOVCOUNT++;
 		String result=res;
 	
 
-		if(DENOVCOUNT%1500==0) {System.out.println("count: "+DENOVCOUNT+", "+result.length());}
+		if(DENOVCOUNT%100==0) 
+		{System.out.println("count: "+DENOVCOUNT+", "+result.length());}
 		String compare;
 		String subtmp;
 		String subtmp2;String subtmp3;
 		int d,j;
 		ArrayList<String>tmp;
 		int len=shorttmp.size();
+		int rindex;
+		int rl;
+		
+		int subrl;
 	//	System.out.println(len);
 		for(j=0;j<shorttmp.size();j++) {
 			
-			if(result.length()>=5000)
+			if(result.length()>=500000)
 				break;
 			
 			compare=shorttmp.get(j);
@@ -78,10 +103,10 @@ static int DENOVCOUNT=0;
 			if(result.contains(subtmp)) {
 				
 				//int rindex=result.indexOf(subtmp);
-				int rindex=result.lastIndexOf(subtmp);
-				int rl=result.length();
+				 rindex=result.lastIndexOf(subtmp);
+				 rl=result.length();
 				
-				int subrl=rl-rindex;
+				 subrl=rl-rindex;
 				if(subrl==r) {
 					
 					result+=subtmp2;
@@ -113,7 +138,8 @@ static int DENOVCOUNT=0;
 			
 				
 		}}
-		if(result.length()>=5000) {	
+		if(result.length()>=500000) {	
+			
 			COUNT++;
 			
 			try {	
@@ -121,14 +147,14 @@ static int DENOVCOUNT=0;
 			  PrintWriter pw;
 					pw = new PrintWriter(bw,true);
 					
-					pw.print(result);
+					pw.println(result);
 					pw.close();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-		System.out.println("denov 쓰기 완료----------------------------------------");
+		System.out.println(result.length()+"denov 쓰기 완료----------------------------------------");
 		
-			return "find";
+			return result;
 			
 		}
 		return "";
