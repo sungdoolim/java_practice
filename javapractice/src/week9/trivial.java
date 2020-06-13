@@ -14,7 +14,6 @@ public class trivial {
 		// TODO Auto-generated method stub
 	
 		String ref ="";
-
 		char[]dna= {'A','G','C','T'};
 		Scanner sc=new Scanner(System.in);
 		int k=sc.nextInt();//30
@@ -150,7 +149,7 @@ public class trivial {
 			int a=5;
 			int c=0;
 			int count=0;
-			  for(int i=0; i<500000; i++) {//50000 만 해보자-------------------------------------------------------
+			  for(int i=0; i<50000; i++) {//50000 만 해보자-------------------------------------------------------
 		         
 				  if(i%500==0) {
 					  System.out.println(i);
