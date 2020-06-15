@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="print" key="selection"/>
+		<item value="out" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="out"/>
+			<item value="99."/>
+			<item value="99"/>
+			<item value="98"/>
+			<item value="97"/>
+			<item value="96"/>
+			<item value="95"/>
+			<item value="94"/>
+			<item value="93"/>
+			<item value="92"/>
+			<item value="91"/>
+			<item value="90"/>
+			<item value="9"/>
 			<item value="print"/>
 			<item value="result"/>
-			<item value="mydna.txt"/>
-			<item value="mydna"/>
-			<item value="myda"/>
-			<item value="br"/>
-			<item value="System"/>
-			<item value="System."/>
-			<item value="k"/>
-			<item value="color"/>
-			<item value="println"/>
-			<item value="tmp"/>
-			<item value="no2"/>
-			<item value="replyM"/>
-			<item value="len"/>
 		</list>
 		<list key="replacehistory">
 			<item value="parent"/>
@@ -35,7 +35,7 @@
 		<item value="340" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="454" key="DIALOG_HEIGHT"/>
-		<item value="1260" key="DIALOG_X_ORIGIN"/>
-		<item value="266" key="DIALOG_Y_ORIGIN"/>
+		<item value="1142" key="DIALOG_X_ORIGIN"/>
+		<item value="345" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -40,10 +40,10 @@ public class compare_denov {
 					if(ref2.length()<l) {
 					 k=l-ref2.length();
 					}
-					 ra=((count+k)/l)*100;//50000개만 해보까--------------------------------------------------
+					 ra=((l-(count+k))/l)*100;//50000개만 해보까--------------------------------------------------
 					
-					 System.out.println(" mydna와 "+(count+k)+"개의 불일치를 가집니다");
-					System.out.println("오차율 : "+ra+"% 입니다");	// 여기는 x%로 잘 만들어 졌는지를 확인합니다.
+					 System.out.println("Difference Count : "+(count+k));
+					System.out.println("Accuracy : "+ra+"%");	// 여기는 x%로 잘 만들어 졌는지를 확인합니다.
 						
 				}
 				         br2.close();

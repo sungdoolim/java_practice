@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;trivial.java&apos; to &apos;javapractice/src/algorithm_dnaprj&apos;&#x0D;&#x0A;- Original project: &apos;javapractice&apos;&#x0D;&#x0A;- Destination element: &apos;javapractice/src/algorithm_dnaprj&apos;&#x0D;&#x0A;- Original element: &apos;week9.trivial.java&apos;" description="Copy compilation unit" destination="/src&lt;algorithm_dnaprj" element1="/src&lt;week9{trivial.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1592141010746" units="1" version="1.0"/>
+</session>
