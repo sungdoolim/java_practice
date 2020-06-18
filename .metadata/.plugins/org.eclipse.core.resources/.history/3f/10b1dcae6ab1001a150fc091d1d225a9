@@ -16,10 +16,9 @@ public class trivial {
 		String ref=inputfile();// 위에서 쓴 파일을 불러옵니다
 		StringBuilder strref=new StringBuilder(ref);
 		StringBuilder strref2=new StringBuilder(ref);// strref는 데이터가 변경되기에 strref2를 따로 만들었습니다.
-		//String []shortread=makeShortread(strref, k, n,10,dna);
-		ArrayList<String>shortread=fileshort();
+		String []shortread=makeShortread(strref, k, n,10,dna);
 		//writeShortread(shortread);// shortread를 파일에 씁니다
-		//shortread=fileshort();// 위에서 쓴 파일을 불러옵니다
+		shortread=fileshort(n);// 위에서 쓴 파일을 불러옵니다
 		String str = filemydna();//makeShortread메서드에서 파일로 저장한 파일을 불러옵니다.
 
 		double count=0;
@@ -45,7 +44,6 @@ public class trivial {
 				System.out.println("Accuracy : "+ra+"%");
 		     	System.out.println("Excuting Time : "+msecDiffTime/1000+"seconds");
 	}
-	
 	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
@@ -135,23 +133,24 @@ public class trivial {
 		}
 		return str;
 	}
-	 static ArrayList<String> fileshort() {
-	        ArrayList<String> strlist=new ArrayList<String>();
-	        BufferedReader br;
-	        try {
-	            String str;
-	            br = new BufferedReader(new FileReader("shortread.txt"));
-	            while(true) {
-	                str=br.readLine();
-	                if(str==null)
-	                { break;}
-	                strlist.add(str);
-	            }br.close();
-	        } catch ( IOException e) {
-	            e.printStackTrace();
-	        }
-	        return strlist;
-	    }
+	static String[] fileshort(int n) {
+		 BufferedReader br;
+		String []shortread=new String[n];
+		try {
+			String str;
+			br = new BufferedReader(new FileReader("shortread.txt"));
+			int i=0;
+			while(true) {
+				 str=br.readLine();	
+				 if(str==null)
+				 { break;}
+		shortread[i]=str;i++;
+			}br.close();
+		} catch ( IOException e) {
+			e.printStackTrace();
+		}
+		return shortread;
+	}
 	static String inputfile() {
 		 BufferedReader br;
 		 String ref="";
@@ -172,7 +171,7 @@ public class trivial {
 	
 	
 	
-	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,ArrayList<String> shortread) {
+	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,String[]shortread) {
 		//int indexcount=0;
 		int count=0;
 	//	boolean countb=false;
@@ -189,7 +188,7 @@ public class trivial {
 			//countb=true;
 			count=0;
 			for(int stl=0;stl<k;stl++,tmp++) {
-				if(shortread.get(stindex).charAt(stl)!=ref.charAt(tmp)) {
+				if(shortread[stindex].charAt(stl)!=ref.charAt(tmp)) {
 					count++;
 					if(count>y) {
 						continue test;
@@ -201,12 +200,65 @@ public class trivial {
 
 				for(int i=0;i<count;i++)
 				{//System.out.println(store[i][1]+","+store[i][0]);
-					ref.setCharAt(store[i][1], shortread.get(stindex).charAt(store[i][0]));}
+					ref.setCharAt(store[i][1], shortread[stindex].charAt(store[i][0]));}
 				break;
 			}
 		}
 	
 		return ref;
+		
+	}
+	static String[] makeShortread(StringBuilder ref,int k,int n,double x,char[] dna) {
+	
+		int rl=ref.length();
+		
+		int ratio=(int)(rl*(x/100));
+		int tmp2;
+		
+		
+		ArrayList<Integer>a=new ArrayList<>();
+		for(int i=0;i<ratio;i++) {
+			tmp2=(int)(Math.random()*rl);
+			while(a.contains(tmp2)) {
+				tmp2=(int)(Math.random()*rl);
+			}a.add(tmp2);
+			
+		}
+	
+		char t;
+		char diff;
+		for(int i=0;i<ratio;i++) {
+			t=ref.charAt(a.get(i));
+			diff=dna[(int)(Math.random()*4)];
+			while(t==diff) {
+				diff=dna[(int)(Math.random()*4)];
+			}
+			//System.out.println(a.get(i)+": "+t+","+diff);
+		ref.setCharAt(a.get(i),diff);// 이 ref는 x%다른 mydna입니다.
+		}//System.out.println(ref);
+		
+		int l=rl-k;
+		String [] shortread=new String[n];
+		int randomtmp;		
+		for(int i=0;i<n;i++){
+			randomtmp=(int)(Math.random()*l);
+			//System.out.println(randomtmp);
+			shortread[i]=ref.substring(randomtmp, randomtmp+k);
+			
+		}
+//
+//		try {	
+//			  PrintWriter pw;
+//					pw = new PrintWriter("C:/Users/bohee/Desktop/mydna.txt");
+//					
+//					pw.print(ref);
+//					
+//				        pw.close();
+//				} catch (FileNotFoundException e) {
+//					e.printStackTrace();
+//				}
+//		System.out.println("mydna 쓰기 완료");
+return shortread;		
 		
 	}
 

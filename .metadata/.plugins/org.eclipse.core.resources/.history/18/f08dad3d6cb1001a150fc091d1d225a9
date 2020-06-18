@@ -14,7 +14,7 @@ public class compare_denov {
 		 double count=0;
 		 double ra;
 			try {
-				br = new BufferedReader(new FileReader("Mydna_1000.txt"));
+				br = new BufferedReader(new FileReader("Mydna.txt"));
 					 ref=br.readLine();				            			         		 	        
 			         br.close();
 			} catch ( IOException e) {

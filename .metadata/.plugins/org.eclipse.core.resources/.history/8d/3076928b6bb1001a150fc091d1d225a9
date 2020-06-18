@@ -172,7 +172,7 @@ public class trivial {
 	
 	
 	
-	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,ArrayList<String> shortread) {
+	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,ArrayList<String> shortread.get) {
 		//int indexcount=0;
 		int count=0;
 	//	boolean countb=false;
@@ -201,7 +201,7 @@ public class trivial {
 
 				for(int i=0;i<count;i++)
 				{//System.out.println(store[i][1]+","+store[i][0]);
-					ref.setCharAt(store[i][1], shortread.get(stindex).charAt(store[i][0]));}
+					ref.setCharAt(store[i][1], shortread.get[stindex].charAt(store[i][0]));}
 				break;
 			}
 		}

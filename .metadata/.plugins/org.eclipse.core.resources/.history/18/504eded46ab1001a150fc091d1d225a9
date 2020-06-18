@@ -37,7 +37,7 @@ public class makemydna {
 		 BufferedReader br;
 		 String ref="";
 			try {
-				br = new BufferedReader(new FileReader("test_ref_1000.txt"));
+				br = new BufferedReader(new FileReader("C:/Users/bohee/Desktop/input.txt"));
 					 ref=br.readLine();				            			         		 	        
 			         br.close();
 			} catch ( IOException e) {

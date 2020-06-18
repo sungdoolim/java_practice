@@ -201,7 +201,7 @@ public class trivial {
 
 				for(int i=0;i<count;i++)
 				{//System.out.println(store[i][1]+","+store[i][0]);
-					ref.setCharAt(store[i][1], shortread.get(stindex).charAt(store[i][0]));}
+					ref.setCharAt(store[i][1], shortread.get[stindex].charAt(store[i][0]));}
 				break;
 			}
 		}

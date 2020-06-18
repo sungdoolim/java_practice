@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class trivial {
 
-	static void triv(int k,int n,int l) {
+	static void triv(int k,int n,int l,ArrayList<String>s) {
 		int y=k/10;
 		char[]dna= {'A','G','C','T'};
 		String ref=inputfile();// 위에서 쓴 파일을 불러옵니다
@@ -19,7 +19,7 @@ public class trivial {
 		//String []shortread=makeShortread(strref, k, n,10,dna);
 		ArrayList<String>shortread=fileshort();
 		//writeShortread(shortread);// shortread를 파일에 씁니다
-		//shortread=fileshort();// 위에서 쓴 파일을 불러옵니다
+		shortread=fileshort(n);// 위에서 쓴 파일을 불러옵니다
 		String str = filemydna();//makeShortread메서드에서 파일로 저장한 파일을 불러옵니다.
 
 		double count=0;
@@ -172,7 +172,7 @@ public class trivial {
 	
 	
 	
-	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,ArrayList<String> shortread) {
+	static StringBuilder makeMyDna(StringBuilder ref,int k,int n,double y,char[] dna,String[]shortread) {
 		//int indexcount=0;
 		int count=0;
 	//	boolean countb=false;
@@ -189,7 +189,7 @@ public class trivial {
 			//countb=true;
 			count=0;
 			for(int stl=0;stl<k;stl++,tmp++) {
-				if(shortread.get(stindex).charAt(stl)!=ref.charAt(tmp)) {
+				if(shortread[stindex].charAt(stl)!=ref.charAt(tmp)) {
 					count++;
 					if(count>y) {
 						continue test;
@@ -201,7 +201,7 @@ public class trivial {
 
 				for(int i=0;i<count;i++)
 				{//System.out.println(store[i][1]+","+store[i][0]);
-					ref.setCharAt(store[i][1], shortread.get(stindex).charAt(store[i][0]));}
+					ref.setCharAt(store[i][1], shortread[stindex].charAt(store[i][0]));}
 				break;
 			}
 		}
