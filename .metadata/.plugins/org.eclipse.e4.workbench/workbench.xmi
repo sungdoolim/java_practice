@@ -533,7 +533,7 @@
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_N4crYK1sEeqiCd_dIuRodQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="compare_denov.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;compare_denov.java&quot; partName=&quot;compare_denov.java&quot; title=&quot;compare_denov.java&quot; tooltip=&quot;javapractice/src/algorithm_dnaprj/compare_denov.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/javapractice/src/algorithm_dnaprj/compare_denov.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;595&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;compare_denov.java&quot; partName=&quot;compare_denov.java&quot; title=&quot;compare_denov.java&quot; tooltip=&quot;javapractice/src/algorithm_dnaprj/compare_denov.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/javapractice/src/algorithm_dnaprj/compare_denov.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;327&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -944,7 +944,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_p4RPa5DzEeqMlsGR-1Gc_g" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_xkGSkLFpEeqeqZb1Vo30Ew" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_p4TtapDzEeqMlsGR-1Gc_g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_I9oA8LFuEeq-4bYSE3OGXQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_p4TtapDzEeqMlsGR-1Gc_g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_p4RPeJDzEeqMlsGR-1Gc_g" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -996,7 +996,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_p4RP3pDzEeqMlsGR-1Gc_g" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_xkJ88bFpEeqeqZb1Vo30Ew" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_p4TtC5DzEeqMlsGR-1Gc_g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_I9sSYLFuEeq-4bYSE3OGXQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_p4TtC5DzEeqMlsGR-1Gc_g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_p4RP6ZDzEeqMlsGR-1Gc_g" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
