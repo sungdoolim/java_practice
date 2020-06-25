@@ -34,7 +34,7 @@ public class denovo {
         System.out.println("limit : ");
         int limit=sc.nextInt();
        
-       // makemydna.make(k,n,l);
+        makemydna.make(k,n,l);
 		  ArrayList<String> shortread=fileshort();
 	      
 		System.out.println("일치 최소 개수 입력 : ");

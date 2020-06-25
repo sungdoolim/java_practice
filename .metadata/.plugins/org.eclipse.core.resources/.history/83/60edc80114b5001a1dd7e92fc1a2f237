@@ -37,7 +37,7 @@ public class makemydna {
 		 BufferedReader br;
 		 String ref="";
 			try {
-				br = new BufferedReader(new FileReader("ref.txt"));
+				br = new BufferedReader(new FileReader("test_ref_1000.txt"));
 					 ref=br.readLine();				            			         		 	        
 			         br.close();
 			} catch ( IOException e) {
@@ -61,7 +61,7 @@ public class makemydna {
 		try {	
 			System.out.println("gg");
 	  PrintWriter pw;
-			pw = new PrintWriter("ref.txt");
+			pw = new PrintWriter("test_ref_1000.txt");
 			
 			int a=5;
 			int c=0;
@@ -147,7 +147,7 @@ public class makemydna {
 
 		try {	
 			  PrintWriter pw;
-					pw = new PrintWriter("mydna.txt");
+					pw = new PrintWriter("Mydna_1000.txt");
 					
 					pw.print(ref);
 					

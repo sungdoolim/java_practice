@@ -15,14 +15,8 @@ import java.util.Scanner;
 public class denovo {
     static int COUNT=0;
     static int DENOVCOUNT=0;
-    // 10000 40 3000 1000 10
-    // 10000 40 2500 1000 10 
-    
-    // 20000 40 7000 1500 10
-    // 20000 40 15000 1500 10
-    
-    
-    
+
+  //5000 40 2000 500 10
 	public static void main(String[] args) throws IOException {	
         Scanner sc=new Scanner(System.in);
         System.out.print("mydna의 길이 입력 : ");
@@ -34,7 +28,7 @@ public class denovo {
         System.out.println("limit : ");
         int limit=sc.nextInt();
        
-       // makemydna.make(k,n,l);
+        makemydna.make(k,n,l);
 		  ArrayList<String> shortread=fileshort();
 	      
 		System.out.println("일치 최소 개수 입력 : ");
@@ -63,9 +57,8 @@ public class denovo {
        
         
         System.out.println("length = "+shortread.size());
-          String res=shortread.remove(0);
-          System.out.println(res);
-            denov(shortread,res,r,l,k,limit); 
+          
+            denov(shortread,shortread.remove(0),r,l,k,limit); 
             // 첫 번째 shortread를 시작으로 하여 알고리즘을 진행합니다.
             // 제한 사항 - shortread의 0번 인덱스를 항상 시작 점으로 둔다(mydna의 시작점을 shortread의 0범 인덱스에 저장 시켜 놓음)
             // 바로 밑에 주석처리 코드는 원래 denove알고리즘의 목적과 맞지만, bruteforce로서 상당한 시간을 요구하기에 위 처럼 제한 사항을 둡니다.
@@ -86,9 +79,9 @@ public class denovo {
             System.out.println("count: "+DENOVCOUNT+", "+result.length());
         if(DENOVCOUNT>=limit){ 
         	// 재귀적으로 호출하는 함수가 1000회 이상일 때 어느정도 길이가 만들어 졌다면 파일에 쓰고 메서드를 종료합니다
-          
-             writefile(result);
-            
+            if(result.length()>l*0.95)
+            { writefile(result);
+            return 1;}
             return 1;
 //            else if(result.length()<l*0.75) {
 //            	//길이가 75% 미만이 만들어 졌다면 계속 진행합니다.

@@ -19,7 +19,6 @@ public class denovo {
     // 10000 40 2500 1000 10 
     
     // 20000 40 7000 1500 10
-    // 20000 40 15000 1500 10
     
     
     
@@ -34,7 +33,7 @@ public class denovo {
         System.out.println("limit : ");
         int limit=sc.nextInt();
        
-       // makemydna.make(k,n,l);
+        makemydna.make(k,n,l);
 		  ArrayList<String> shortread=fileshort();
 	      
 		System.out.println("일치 최소 개수 입력 : ");

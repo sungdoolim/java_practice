@@ -127,7 +127,7 @@ public class trivial {
 		 BufferedReader br;
 		 String str="";
 		try {
-			br = new BufferedReader(new FileReader("mydna.txt"));
+			br = new BufferedReader(new FileReader("Mydna_1000.txt"));
 				 str=br.readLine();	
 	br.close();
 		} catch ( IOException e) {
@@ -156,7 +156,7 @@ public class trivial {
 		 BufferedReader br;
 		 String ref="";
 			try {
-				br = new BufferedReader(new FileReader("ref.txt"));
+				br = new BufferedReader(new FileReader("test_ref_1000.txt"));
 					 ref=br.readLine();				            			         		 	        
 			         br.close();
 			} catch ( IOException e) {
